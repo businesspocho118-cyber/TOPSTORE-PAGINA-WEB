@@ -5,15 +5,10 @@ import { getProductByProductId, getProductIds } from '@/lib/products'
 import { getFirstImage } from '@/lib/utils'
 
 export const runtime = 'edge'
-export const revalidate = 60
+export const runtime = 'edge'
 
 type ProductPageProps = {
   params: Promise<{ product_id: string }>
-}
-
-export async function generateStaticParams() {
-  const products = await getProductIds()
-  return products.map((product) => ({ product_id: product.product_id }))
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {

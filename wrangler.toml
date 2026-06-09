@@ -1,0 +1,7 @@
+name = "topstore-pagina-web"
+compatibility_date = "2026-06-09"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "_worker.js"
+
+[vars]
+STORE_REVALIDATE_TOKEN = "token_secreto_compartido_con_la_tienda"

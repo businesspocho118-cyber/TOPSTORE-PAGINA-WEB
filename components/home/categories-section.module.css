@@ -1,0 +1,234 @@
+﻿.section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(184, 138, 45, 0.14), transparent 20rem),
+    radial-gradient(circle at 90% 12%, rgba(12, 10, 9, 0.08), transparent 25rem),
+    linear-gradient(180deg, #f8f6f0 0%, #efe9dd 52%, #f8f6f0 100%);
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -4;
+  opacity: 0.42;
+  background-image:
+    linear-gradient(rgba(12, 10, 9, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(12, 10, 9, 0.045) 1px, transparent 1px);
+  background-size: 4.25rem 4.25rem;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 88%, transparent);
+}
+
+.orbOne,
+.orbTwo,
+.ribbon {
+  pointer-events: none;
+  position: absolute;
+  z-index: -2;
+  will-change: transform;
+}
+
+.orbOne {
+  right: -10rem;
+  top: 4rem;
+  width: min(48vw, 34rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(184, 138, 45, 0.22);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(184, 138, 45, 0.18), transparent 64%),
+    conic-gradient(from 180deg, transparent, rgba(184, 138, 45, 0.26), transparent 38%, rgba(12, 10, 9, 0.12), transparent 72%);
+}
+
+.orbTwo {
+  left: -12rem;
+  bottom: 2rem;
+  width: min(42vw, 28rem);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(12, 10, 9, 0.12), transparent 68%);
+  filter: blur(2px);
+}
+
+.ribbon {
+  left: -14vw;
+  top: 46%;
+  width: 66vw;
+  height: 8.5rem;
+  border: 1px solid rgba(184, 138, 45, 0.16);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(184, 138, 45, 0.14), rgba(255, 255, 255, 0.12), transparent);
+  transform: rotate(-11deg);
+}
+
+.card {
+  isolation: isolate;
+  min-height: clamp(31rem, 42vw, 38rem);
+  padding: clamp(0.85rem, 1.4vw, 1.25rem);
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(239, 232, 218, 0.82)),
+    radial-gradient(circle at 88% 12%, rgba(184, 138, 45, 0.16), transparent 15rem);
+  box-shadow:
+    0 28px 70px rgba(12, 10, 9, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  transform-style: preserve-3d;
+  transition: transform 360ms ease, box-shadow 360ms ease, border-color 360ms ease;
+}
+
+.card:hover {
+  border-color: rgba(184, 138, 45, 0.32);
+  box-shadow:
+    0 34px 84px rgba(12, 10, 9, 0.14),
+    0 0 0 1px rgba(184, 138, 45, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  transform: translateY(-6px);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, transparent 0 48%, rgba(184, 138, 45, 0.08) 49% 51%, transparent 52% 100%),
+    radial-gradient(circle at 12% 100%, rgba(255, 255, 255, 0.52), transparent 16rem);
+}
+
+.innerFrame {
+  position: relative;
+  display: flex;
+  min-height: inherit;
+  height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(12, 10, 9, 0.11);
+  border-radius: 1.65rem;
+  background: rgba(248, 246, 240, 0.82);
+}
+
+.imageFrame {
+  position: relative;
+  min-height: clamp(21rem, 32vw, 30rem);
+  flex: 1 1 auto;
+  overflow: hidden;
+  border-radius: 1.45rem 1.45rem 0.95rem 0.95rem;
+  background: #e7dfcf;
+}
+
+.imageFrame::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 2;
+  height: 36%;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(248, 246, 240, 0.68) 54%, rgba(248, 246, 240, 0.96));
+}
+
+.image {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.035);
+  transition: transform 800ms ease, filter 800ms ease;
+  will-change: transform;
+}
+
+.card:hover .image {
+  transform: scale(1.095);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(12, 10, 9, 0.02), rgba(12, 10, 9, 0.08)),
+    linear-gradient(118deg, transparent 0 50%, rgba(239, 227, 196, 0.28) 50.5% 55%, transparent 55.5% 100%);
+  mix-blend-mode: screen;
+}
+
+.arrowBadge {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 4;
+  display: grid;
+  width: 3.4rem;
+  height: 3.4rem;
+  place-items: center;
+  border-bottom-left-radius: 1.1rem;
+  background: rgba(248, 246, 240, 0.94);
+  color: #8a6419;
+  box-shadow: 0 14px 30px rgba(12, 10, 9, 0.12);
+  transition: color 300ms ease, transform 300ms ease, background 300ms ease;
+}
+
+.card:hover .arrowBadge {
+  color: #0c0a09;
+  background: #f4ead4;
+  transform: translate(-0.15rem, 0.15rem) rotate(45deg);
+}
+
+.cardBody {
+  position: relative;
+  z-index: 5;
+  margin-top: -2.15rem;
+  padding: 3rem clamp(1rem, 1.4vw, 1.55rem) 1.35rem;
+  background:
+    linear-gradient(180deg, rgba(248, 246, 240, 0.68), rgba(248, 246, 240, 0.98) 28%, rgba(239, 232, 218, 0.96));
+  box-shadow: 0 -22px 42px rgba(248, 246, 240, 0.82);
+}
+
+.men .image {
+  object-position: 48% 47%;
+}
+
+.women .image {
+  object-position: 50% 48%;
+}
+
+.accessories .image {
+  object-position: 52% 50%;
+}
+
+@media (max-width: 1024px) {
+  .card {
+    min-height: 34rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .section::before {
+    background-size: 3.25rem 3.25rem;
+  }
+
+  .card {
+    min-height: 31rem;
+    border-radius: 1.85rem;
+  }
+
+  .innerFrame {
+    border-radius: 1.35rem;
+  }
+
+  .imageFrame {
+    min-height: 22rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbOne,
+  .orbTwo,
+  .ribbon,
+  .image,
+  .card,
+  .arrowBadge {
+    transform: none !important;
+  }
+}

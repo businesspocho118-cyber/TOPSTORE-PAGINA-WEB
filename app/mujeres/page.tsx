@@ -1,0 +1,34 @@
+﻿import type { Metadata } from 'next'
+import { Suspense } from 'react'
+import { CatalogBackdrop } from '@/components/products/CatalogBackdrop'
+import { CategoryProductGrid } from '@/components/products/CategoryProductGrid'
+import { ProductGridSkeleton } from '@/components/products/ProductGrid'
+
+export const metadata: Metadata = {
+  title: 'Ropa deportiva para mujeres',
+  description: 'Leggins, conjuntos, tops y ropa deportiva premium para mujeres en Colombia. Envíos a todo el país.'
+}
+
+export const revalidate = 60
+
+export default function MujeresPage() {
+  return (
+    <section className="relative overflow-hidden">
+      <CatalogBackdrop tone="rose" />
+      <div className="container-luxe safe-top pb-24">
+        <div className="max-w-3xl rounded-[2.5rem] border border-white/70 bg-white/48 p-6 shadow-[0_24px_80px_rgba(12,10,9,0.08)] backdrop-blur-xl sm:p-8">
+          <p className="eyebrow">Mujeres</p>
+          <h1 className="section-title mt-3">Ropa deportiva femenina</h1>
+          <p className="mt-6 max-w-2xl text-base leading-8 text-muted">
+            Siluetas cómodas, durables y elegantes para entrenar con seguridad. Catálogo sincronizado con Supabase.
+          </p>
+        </div>
+        <div className="mt-12">
+          <Suspense fallback={<ProductGridSkeleton />}>
+            <CategoryProductGrid genero="mujeres" />
+          </Suspense>
+        </div>
+      </div>
+    </section>
+  )
+}

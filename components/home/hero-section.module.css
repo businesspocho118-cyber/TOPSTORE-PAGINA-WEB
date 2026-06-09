@@ -1,0 +1,318 @@
+.hero {
+  --hero-shift: 0;
+  isolation: isolate;
+  color: #f8f6f0;
+  background:
+    radial-gradient(circle at calc(78% - (var(--hero-shift) * 12%)) 20%, rgba(184, 138, 45, 0.34), transparent 28rem),
+    radial-gradient(circle at 12% 28%, rgba(255, 255, 255, 0.08), transparent 22rem),
+    linear-gradient(135deg, #070605 0%, #14110f 52%, #2a1c0b 120%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  opacity: 0.34;
+  background-image:
+    linear-gradient(rgba(239, 227, 196, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(239, 227, 196, 0.08) 1px, transparent 1px);
+  background-size: 4.5rem 4.5rem;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 86%, transparent);
+  transform: translate3d(calc(var(--hero-shift) * -1.5rem), 0, 0);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: auto -12vw -26vh -12vw;
+  z-index: -2;
+  height: 42vh;
+  background: radial-gradient(ellipse at center, rgba(184, 138, 45, 0.32), rgba(184, 138, 45, 0.05) 45%, transparent 72%);
+}
+
+.noise {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.12;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.34) 0 1px, transparent 1px),
+    radial-gradient(circle at 80% 60%, rgba(184, 138, 45, 0.34) 0 1px, transparent 1px);
+  background-size: 18px 18px, 28px 28px;
+  mix-blend-mode: screen;
+}
+
+.lightField {
+  pointer-events: none;
+  position: absolute;
+  right: 6vw;
+  top: 7rem;
+  z-index: -1;
+  width: min(42vw, 34rem);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.18), rgba(184, 138, 45, 0.15) 42%, transparent 68%);
+  filter: blur(16px);
+  transform: translate3d(0, calc(var(--hero-shift) * 2rem), 0);
+}
+
+.copyBlock {
+  max-width: 35rem;
+}
+
+.kicker {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid rgba(239, 227, 196, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.65rem 1rem;
+  color: #efe3c4;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  backdrop-filter: blur(14px);
+}
+
+.title {
+  margin-top: 1.35rem;
+  max-width: 34rem;
+  color: #fffaf0;
+  font-family: var(--font-bebas), var(--font-dm-sans), system-ui, sans-serif;
+  font-size: clamp(3rem, 4.9vw, 5.65rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 0.92;
+  text-transform: uppercase;
+  text-wrap: balance;
+  text-shadow: 0 24px 80px rgba(0, 0, 0, 0.42);
+}
+
+.lead {
+  margin-top: 1.4rem;
+  max-width: 35rem;
+  color: rgba(248, 246, 240, 0.78);
+  font-size: clamp(1rem, 1.45vw, 1.18rem);
+  line-height: 1.75;
+}
+
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.textLink {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.6rem;
+  color: #efe3c4;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: color 240ms ease, transform 240ms ease;
+}
+
+.textLink:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.trustRow {
+  margin-top: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.trustRow span {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid rgba(239, 227, 196, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.075);
+  padding: 0.68rem 0.95rem;
+  color: rgba(248, 246, 240, 0.78);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  backdrop-filter: blur(16px);
+}
+
+.stage {
+  position: relative;
+  min-height: clamp(30rem, 48vw, 36rem);
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.orbit {
+  position: absolute;
+  left: 52%;
+  top: 51%;
+  width: min(50vw, 32rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(239, 227, 196, 0.24);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(184, 138, 45, 0.16), transparent 62%),
+    conic-gradient(from 120deg, transparent, rgba(239, 227, 196, 0.38), transparent 34%, rgba(184, 138, 45, 0.28), transparent 74%);
+  box-shadow: inset 0 0 70px rgba(184, 138, 45, 0.14);
+  transform: translate3d(-50%, -50%, -130px) rotateX(65deg);
+}
+
+.lookTile {
+  position: absolute;
+  z-index: 4;
+  width: clamp(9.5rem, 13.4vw, 13.8rem);
+  overflow: hidden;
+  border: 1px solid rgba(239, 227, 196, 0.25);
+  border-radius: 1.5rem;
+  background: rgba(248, 246, 240, 0.94);
+  box-shadow: 0 26px 75px rgba(0, 0, 0, 0.42);
+  color: #14110f;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.tileImage {
+  position: relative;
+  aspect-ratio: 4 / 4.9;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 24%, rgba(184, 138, 45, 0.12), transparent 44%),
+    #f8f6f0;
+}
+
+.tileMeta {
+  display: grid;
+  gap: 0.2rem;
+  border-top: 1px solid rgba(12, 10, 9, 0.08);
+  padding: 0.78rem 0.82rem 0.95rem;
+}
+
+.tileMeta span {
+  color: #7a5614;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.tileMeta strong {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.tileOne {
+  left: 10%;
+  top: 8%;
+  transform: translate3d(0, 0, 145px) rotateY(-8deg) rotateZ(-5deg);
+}
+
+.tileTwo {
+  right: 6%;
+  top: 17%;
+  transform: translate3d(0, 0, 105px) rotateY(8deg) rotateZ(5deg);
+}
+
+.tileThree {
+  left: 39%;
+  top: 42%;
+  transform: translate3d(0, 0, 160px) rotateY(6deg) rotateZ(-4deg);
+}
+
+@media (max-width: 1023px) {
+  .copyBlock {
+    padding-top: 2rem;
+  }
+
+  .stage {
+    min-height: 34rem;
+    margin-bottom: 2rem;
+  }
+
+  .lookTile {
+    width: clamp(8.4rem, 24vw, 11.8rem);
+  }
+
+  .tileOne {
+    left: 4%;
+  }
+
+  .tileTwo {
+    right: 4%;
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: clamp(2.85rem, 11.5vw, 4.25rem);
+    line-height: 0.95;
+  }
+
+  .lead {
+    font-size: 0.98rem;
+  }
+
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .textLink {
+    justify-content: center;
+  }
+
+  .trustRow {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .stage {
+    min-height: 27rem;
+  }
+
+  .lookTile {
+    width: min(33vw, 9.4rem);
+    border-radius: 1.2rem;
+  }
+
+  .tileOne {
+    left: 0;
+    top: 6%;
+  }
+
+  .tileTwo {
+    right: 0;
+    top: 10%;
+  }
+
+  .tileThree {
+    left: 34%;
+    top: 42%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage,
+  .lookTile,
+  .orbit {
+    transform: none !important;
+  }
+}

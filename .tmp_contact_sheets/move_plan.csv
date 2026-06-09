@@ -1,0 +1,129 @@
+section,index,destRel
+ROOT,1,accesorios\audifonos blancos.jpeg
+ROOT,2,accesorios\audifonos negros.jpeg
+ROOT,3,accesorios\audifonos rosados.jpeg
+HOMBRES,1,HOMBRES\camisetas sin mangas hombre\camiseta sin mangas hombre negra estampada.jpeg
+HOMBRES,2,HOMBRES\camisetas sin mangas hombre\camiseta sin mangas hombre blanca estampada.jpeg
+HOMBRES,3,HOMBRES\camisetas sin mangas hombre\camiseta sin mangas hombre negra logo.jpeg
+HOMBRES,4,HOMBRES\camisetas hombre\camiseta hombre blanca ajustada.jpeg
+HOMBRES,5,HOMBRES\camisetas hombre\camiseta hombre gris espalda.jpeg
+HOMBRES,6,HOMBRES\camisetas sin mangas hombre\camiseta sin mangas hombre negra deportiva frente.jpeg
+HOMBRES,7,HOMBRES\camisetas sin mangas hombre\camiseta sin mangas hombre negra deportiva espalda.jpeg
+HOMBRES,8,HOMBRES\camisetas hombre\camiseta hombre negra logo.jpeg
+HOMBRES,9,HOMBRES\camisetas sin mangas hombre\camiseta sin mangas hombre negra rayo.jpeg
+HOMBRES,10,HOMBRES\chaquetas hombre\chaqueta hombre blanca frente.jpeg
+HOMBRES,11,HOMBRES\chaquetas hombre\chaqueta hombre blanca espalda.jpeg
+HOMBRES,12,HOMBRES\camisetas sin mangas hombre\camiseta sin mangas hombre blanca logo.jpeg
+HOMBRES,13,HOMBRES\camisetas sin mangas hombre\camiseta sin mangas hombre negra con capucha.jpeg
+HOMBRES,14,HOMBRES\buzos hombre\buzo hombre negro cierre.jpeg
+MUJERES,1,MUJERES\enterizos mujer\enterizo mujer negro espalda lateral.jpeg
+MUJERES,2,MUJERES\enterizos mujer\enterizo mujer negro espalda.jpeg
+MUJERES,3,MUJERES\enterizos mujer\enterizo mujer azul marino frente.jpeg
+MUJERES,4,MUJERES\conjuntos legging mujer\conjunto legging mujer negro espalda.jpeg
+MUJERES,5,MUJERES\enterizos mujer\enterizo mujer negro frente.jpeg
+MUJERES,6,MUJERES\enterizos short mujer\enterizo short mujer marron espalda.jpeg
+MUJERES,7,MUJERES\enterizos short mujer\enterizo short mujer negro frente.jpeg
+MUJERES,8,MUJERES\conjuntos short mujer\conjunto short mujer negro espalda.jpeg
+MUJERES,9,MUJERES\conjuntos short mujer\conjunto short mujer azul frente.jpeg
+MUJERES,10,MUJERES\chaquetas mujer\chaqueta mujer marron frente.jpeg
+MUJERES,11,MUJERES\chaquetas mujer\chaqueta mujer marron espalda.jpeg
+MUJERES,12,MUJERES\enterizos short mujer\enterizo short mujer rosado frente.jpeg
+MUJERES,13,MUJERES\enterizos short mujer\enterizo short mujer negro frente 2.jpeg
+MUJERES,14,MUJERES\enterizos short mujer\enterizo short mujer vinotinto espalda.jpeg
+MUJERES,15,MUJERES\enterizos short mujer\enterizo short mujer marron espalda 2.jpeg
+MUJERES,16,MUJERES\conjuntos legging mujer\conjunto legging mujer negro frente.jpeg
+MUJERES,17,MUJERES\conjuntos pantalon mujer\conjunto pantalon mujer marron frente.jpeg
+MUJERES,18,MUJERES\conjuntos legging mujer\conjunto legging mujer azul oscuro frente.jpeg
+MUJERES,19,MUJERES\enterizos short mujer\enterizo short mujer negro frente 3.jpeg
+MUJERES,20,MUJERES\enterizos short mujer\enterizo short mujer azul espalda.jpeg
+MUJERES,21,MUJERES\shorts mujer\short mujer morado detalle.jpeg
+MUJERES,22,MUJERES\shorts mujer\short mujer rojo detalle.jpeg
+MUJERES,23,MUJERES\pantalones campana mujer\pantalon campana mujer rosado frente.jpeg
+MUJERES,24,MUJERES\tops deportivos mujer\top deportivo mujer negro espalda.jpeg
+MUJERES,25,MUJERES\camisetas mujer\camiseta mujer vinotinto frente.jpeg
+MUJERES,26,MUJERES\camisetas mujer\camiseta mujer negra frente.jpeg
+MUJERES,27,MUJERES\conjuntos legging mujer\conjunto legging mujer negro frente 2.jpeg
+MUJERES,28,MUJERES\tops deportivos mujer\top deportivo mujer blanco frente.jpeg
+MUJERES,29,MUJERES\pantalones campana mujer\pantalon campana mujer negro frente.jpeg
+MUJERES,30,MUJERES\pantalones campana mujer\pantalon campana mujer negro espalda.jpeg
+MUJERES,31,MUJERES\pantalones campana mujer\pantalon campana mujer morado lateral.jpeg
+MUJERES,32,MUJERES\leggings mujer\legging mujer azul marino espalda.jpeg
+MUJERES,33,MUJERES\conjuntos legging mujer\conjunto legging mujer negro espalda 2.jpeg
+MUJERES,34,MUJERES\leggings mujer\legging mujer marron espalda.jpeg
+MUJERES,35,MUJERES\shorts mujer\short mujer marron detalle.jpeg
+MUJERES,36,MUJERES\medias mujer\medias mujer blanco negro set.jpeg
+MUJERES,37,MUJERES\medias mujer\medias mujer multicolor set.jpeg
+MUJERES,38,MUJERES\chaquetas mujer\chaqueta mujer blanca frente.jpeg
+MUJERES,39,MUJERES\chaquetas mujer\chaqueta mujer blanca espalda.jpeg
+MUJERES,40,MUJERES\enterizos mujer\enterizo mujer azul marino frente 2.jpeg
+MUJERES,41,MUJERES\chaquetas mujer\chaqueta mujer vinotinto frente.jpeg
+MUJERES,42,MUJERES\enterizos mujer\enterizo mujer marron espalda lateral.jpeg
+MUJERES,43,MUJERES\enterizos mujer\enterizo mujer marron frente.jpeg
+MUJERES,44,MUJERES\chaquetas mujer\chaqueta mujer rosada frente.jpeg
+MUJERES,45,MUJERES\chaquetas mujer\chaqueta mujer negra frente.jpeg
+MUJERES,46,MUJERES\enterizos mujer\enterizo mujer azul marino espalda lateral.jpeg
+MUJERES,47,MUJERES\chaquetas mujer\chaqueta mujer rosada frente 2.jpeg
+MUJERES,48,MUJERES\conjuntos short mujer\conjunto short mujer marron frente.jpeg
+MUJERES,49,MUJERES\conjuntos short mujer\conjunto short mujer vinotinto frente.jpeg
+MUJERES,50,MUJERES\conjuntos short mujer\conjunto short mujer morado frente.jpeg
+MUJERES,51,MUJERES\conjuntos short mujer\conjunto short mujer negro frente.jpeg
+MUJERES,52,MUJERES\chaquetas mujer\chaqueta mujer gris frente.jpeg
+MUJERES,53,MUJERES\shorts mujer\short mujer blanco detalle.jpeg
+MUJERES,54,MUJERES\shorts mujer\short mujer azul claro detalle.jpeg
+MUJERES,55,MUJERES\shorts mujer\short mujer marron detalle 2.jpeg
+MUJERES,56,MUJERES\shorts mujer\short mujer lila detalle.jpeg
+MUJERES,57,MUJERES\shorts mujer\short mujer rosado detalle.jpeg
+MUJERES,58,MUJERES\shorts mujer\short mujer negro detalle.jpeg
+MUJERES,59,MUJERES\shorts mujer\short mujer azul marino detalle.jpeg
+MUJERES,60,MUJERES\shorts mujer\short mujer verde menta detalle.jpeg
+MUJERES,61,MUJERES\shorts mujer\short mujer azul claro detalle 2.jpeg
+MUJERES,62,MUJERES\chaquetas mujer\chaqueta mujer gris oscuro frente.jpeg
+MUJERES,63,MUJERES\shorts mujer\short mujer gris detalle.jpeg
+MUJERES,64,MUJERES\pantalones campana mujer\pantalon campana mujer azul marino lateral.jpeg
+MUJERES,65,MUJERES\pantalones campana mujer\pantalon campana mujer morado lateral 2.jpeg
+MUJERES,66,MUJERES\pantalones campana mujer\pantalon campana mujer rosado lateral.jpeg
+MUJERES,67,MUJERES\chaquetas mujer\chaqueta mujer azul marino frente.jpeg
+MUJERES,68,MUJERES\shorts mujer\short mujer rojo detalle 2.jpeg
+MUJERES,69,MUJERES\pantalones campana mujer\pantalon campana mujer rojo lateral.jpeg
+MUJERES,70,MUJERES\pantalones campana mujer\pantalon campana mujer rojo frente.jpeg
+MUJERES,71,MUJERES\conjuntos short mujer\conjunto short mujer negro captura frente.jpeg
+MUJERES,72,MUJERES\conjuntos short mujer\conjunto short mujer azul captura espalda.jpeg
+MUJERES,73,MUJERES\chaquetas mujer\chaqueta mujer azul frente.jpeg
+MUJERES,74,MUJERES\pantalones campana mujer\pantalon campana mujer marron frente.jpeg
+MUJERES,75,MUJERES\enterizos short mujer\enterizo short mujer azul frente.jpeg
+MUJERES,76,MUJERES\pantalones campana mujer\pantalon campana mujer negro frente 2.jpeg
+MUJERES,77,MUJERES\enterizos short mujer\enterizo short mujer vinotinto frente.jpeg
+MUJERES,78,MUJERES\pantalones campana mujer\pantalon campana mujer azul marino frente.jpeg
+MUJERES,79,MUJERES\pantalones campana mujer\pantalon campana mujer morado frente.jpeg
+MUJERES,80,MUJERES\conjuntos short mujer\conjunto short mujer azul frente 2.jpeg
+MUJERES,81,MUJERES\enterizos mujer\enterizo mujer marron lateral.jpeg
+MUJERES,82,MUJERES\enterizos mujer\enterizo mujer rojo lateral.jpeg
+MUJERES,83,MUJERES\enterizos short mujer\enterizo short mujer vinotinto espalda 2.jpeg
+MUJERES,84,MUJERES\enterizos short mujer\enterizo short mujer negro espalda.jpeg
+MUJERES,85,MUJERES\leggings mujer\legging mujer marron espalda 2.jpeg
+MUJERES,86,MUJERES\leggings mujer\legging mujer azul marino lateral.jpeg
+MUJERES,87,MUJERES\enterizos mujer\enterizo mujer morado frente.jpeg
+MUJERES,88,MUJERES\enterizos mujer\enterizo mujer azul marino lateral.jpeg
+MUJERES,89,MUJERES\enterizos short mujer\enterizo short mujer marron frente.jpeg
+MUJERES,90,MUJERES\enterizos mujer\enterizo mujer rosado frente.jpeg
+MUJERES,91,MUJERES\enterizos short mujer\enterizo short mujer negro espalda 2.jpeg
+MUJERES,92,MUJERES\enterizos mujer\enterizo mujer negro frente 2.jpeg
+MUJERES,93,MUJERES\enterizos mujer\enterizo mujer marron frente 2.jpeg
+MUJERES,94,MUJERES\enterizos short mujer\enterizo short mujer gris frente.jpeg
+MUJERES,95,MUJERES\enterizos mujer\enterizo mujer azul marino espalda.jpeg
+MUJERES,96,MUJERES\enterizos short mujer\enterizo short mujer azul frente 2.jpeg
+MUJERES,97,MUJERES\enterizos short mujer\enterizo short mujer marron frente 2.jpeg
+MUJERES,98,MUJERES\enterizos mujer\enterizo mujer marron espalda.jpeg
+MUJERES,99,MUJERES\enterizos short mujer\enterizo short mujer azul espalda 2.jpeg
+MUJERES,100,MUJERES\enterizos short mujer\enterizo short mujer negro espalda 3.jpeg
+MUJERES,101,MUJERES\leggings mujer\legging mujer marron lateral.jpeg
+MUJERES,102,MUJERES\leggings mujer\legging mujer vinotinto lateral.jpeg
+MUJERES,103,MUJERES\leggings mujer\legging mujer negro espalda.jpeg
+MUJERES,104,MUJERES\leggings mujer\legging mujer azul marino espalda 2.jpeg
+MUJERES,105,MUJERES\leggings mujer\legging mujer negro lateral.jpeg
+MUJERES,106,MUJERES\tops deportivos mujer\top deportivo mujer vinotinto frente.jpeg
+MUJERES,107,MUJERES\tops deportivos mujer\top deportivo mujer marron frente.jpeg
+MUJERES,108,MUJERES\tops deportivos mujer\top deportivo mujer negro frente.jpeg
+MUJERES,109,MUJERES\tops deportivos mujer\tops deportivos mujer negro azul set.jpeg
+MUJERES,110,MUJERES\tops deportivos mujer\tops deportivos mujer surtidos set.jpeg
+MUJERES,111,MUJERES\camisetas mujer\camiseta mujer azul marino frente.jpeg

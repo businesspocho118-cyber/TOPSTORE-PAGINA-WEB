@@ -1,0 +1,575 @@
+{
+  "sourceRoot": "C:\\Users\\JOHANPRO\\Desktop\\FOTOS PRENDAS NUEVO",
+  "targetRoot": "C:\\Users\\JOHANPRO\\Desktop\\Paginas WEB\\Test\\Test 2\\public\\product-color-images",
+  "ignored": [
+    "accesorios",
+    "MUJERES/Enterizo NUEVO TESTTTT"
+  ],
+  "copiedImageCount": 179,
+  "mappedVariantCount": 92,
+  "mappedProductCount": 29,
+  "mappedFolders": [
+    {
+      "productId": "buzo-compresor-hombre",
+      "folder": "HOMBRES/buzo compresor hombre/Azul",
+      "color": "Azul",
+      "images": 2
+    },
+    {
+      "productId": "buzo-compresor-hombre",
+      "folder": "HOMBRES/buzo compresor hombre/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "camisa-compresora-sencillas",
+      "folder": "HOMBRES/camiseta compresora hombre/Blanco",
+      "color": "Blanco",
+      "images": 2
+    },
+    {
+      "productId": "camisa-own-it",
+      "folder": "HOMBRES/camiseta own it hombre/Gris",
+      "color": "Gris",
+      "images": 2
+    },
+    {
+      "productId": "camisa-own-it",
+      "folder": "HOMBRES/camiseta own it hombre/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "buzo-sin-manga-hombre",
+      "folder": "HOMBRES/camiseta sin mangas con capucha hombre/Negro",
+      "color": "Negro",
+      "images": 1
+    },
+    {
+      "productId": "camisa-alpha",
+      "folder": "HOMBRES/camiseta sin mangas deportiva hombre/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "camisa-i-dont-care",
+      "folder": "HOMBRES/Camiseta sin mangas I DONT CARE/Blanco",
+      "color": "Blanco",
+      "images": 2
+    },
+    {
+      "productId": "camisa-i-dont-care",
+      "folder": "HOMBRES/Camiseta sin mangas I DONT CARE/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "sin-manga-doble-lineas",
+      "folder": "HOMBRES/camiseta sin mangas rayo hombre/Gris",
+      "color": "Gris",
+      "images": 2
+    },
+    {
+      "productId": "sin-manga-doble-lineas",
+      "folder": "HOMBRES/camiseta sin mangas rayo hombre/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "camisa-workout",
+      "folder": "HOMBRES/camiseta sin mangas workout hombre/Blanco",
+      "color": "Blanco",
+      "images": 2
+    },
+    {
+      "productId": "camisa-workout",
+      "folder": "HOMBRES/camiseta sin mangas workout hombre/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "camisa-tirantes",
+      "folder": "HOMBRES/camiseta tirantes/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "chaqueta-deportiva-larga",
+      "folder": "HOMBRES/chaqueta deportiva hombre/Blanco",
+      "color": "Blanco",
+      "images": 2
+    },
+    {
+      "productId": "camisa-compresora-mujer",
+      "folder": "MUJERES/Camiseta/Azul Marino",
+      "color": "Azul Marino",
+      "images": 2
+    },
+    {
+      "productId": "camisa-compresora-mujer",
+      "folder": "MUJERES/Camiseta/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "camisa-compresora-mujer",
+      "folder": "MUJERES/Camiseta/Rosado",
+      "color": "Rosado",
+      "images": 2
+    },
+    {
+      "productId": "camisa-compresora-mujer",
+      "folder": "MUJERES/Camiseta/Vinotinto",
+      "color": "Vinotinto",
+      "images": 2
+    },
+    {
+      "productId": "chaqueta-mujer",
+      "folder": "MUJERES/chaqueta compresora con cierre mujer/Azul",
+      "color": "Azul",
+      "images": 2
+    },
+    {
+      "productId": "chaqueta-mujer",
+      "folder": "MUJERES/chaqueta compresora con cierre mujer/Gris",
+      "color": "Gris",
+      "images": 2
+    },
+    {
+      "productId": "chaqueta-mujer",
+      "folder": "MUJERES/chaqueta compresora con cierre mujer/Gris Oscuro",
+      "color": "Gris Oscuro",
+      "images": 2
+    },
+    {
+      "productId": "chaqueta-mujer",
+      "folder": "MUJERES/chaqueta compresora con cierre mujer/Marron",
+      "color": "Marron",
+      "images": 2
+    },
+    {
+      "productId": "chaqueta-mujer",
+      "folder": "MUJERES/chaqueta compresora con cierre mujer/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "chaqueta-mujer",
+      "folder": "MUJERES/chaqueta compresora con cierre mujer/Rosado",
+      "color": "Rosado",
+      "images": 2
+    },
+    {
+      "productId": "chaqueta-mujer",
+      "folder": "MUJERES/chaqueta compresora con cierre mujer/Vinotinto",
+      "color": "Vinotinto",
+      "images": 2
+    },
+    {
+      "productId": "chaqueta-elastica",
+      "folder": "MUJERES/Chaqueta delgada/Blanco",
+      "color": "Blanco",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins",
+      "folder": "MUJERES/Conjunto con leggins/Azul Marino",
+      "color": "Azul Marino",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins",
+      "folder": "MUJERES/Conjunto con leggins/Marron",
+      "color": "Marron",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins",
+      "folder": "MUJERES/Conjunto con leggins/Morado",
+      "color": "Morado",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins",
+      "folder": "MUJERES/Conjunto con leggins/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins",
+      "folder": "MUJERES/Conjunto con leggins/Rosado",
+      "color": "Rosado",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins",
+      "folder": "MUJERES/Conjunto con leggins/Vinotinto",
+      "color": "Vinotinto",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins-bota-campana",
+      "folder": "MUJERES/Conjunto con leggins Botacampana/Azul Marino",
+      "color": "Azul Marino",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins-bota-campana",
+      "folder": "MUJERES/Conjunto con leggins Botacampana/Marron",
+      "color": "Marron",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins-bota-campana",
+      "folder": "MUJERES/Conjunto con leggins Botacampana/Morado",
+      "color": "Morado",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins-bota-campana",
+      "folder": "MUJERES/Conjunto con leggins Botacampana/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins-bota-campana",
+      "folder": "MUJERES/Conjunto con leggins Botacampana/Rosado",
+      "color": "Rosado",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-leggins-bota-campana",
+      "folder": "MUJERES/Conjunto con leggins Botacampana/Vinotinto",
+      "color": "Vinotinto",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-short-sin-bolsillos",
+      "folder": "MUJERES/Conjunto con short sin bolsillo/Rosado",
+      "color": "Rosado",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-short-sin-bolsillos",
+      "folder": "MUJERES/Conjunto con short sin bolsillo/Vinotinto",
+      "color": "Vinotinto",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-short-y-bolsillos",
+      "folder": "MUJERES/Conjunto con short y bolsillo/Azul Oscuro",
+      "color": "Azul Oscuro",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-short-y-bolsillos",
+      "folder": "MUJERES/Conjunto con short y bolsillo/Marron",
+      "color": "Marron",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-short-y-bolsillos",
+      "folder": "MUJERES/Conjunto con short y bolsillo/Morado",
+      "color": "Morado",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-short-y-bolsillos",
+      "folder": "MUJERES/Conjunto con short y bolsillo/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-short-y-bolsillos",
+      "folder": "MUJERES/Conjunto con short y bolsillo/Rojo",
+      "color": "Rojo",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-top",
+      "folder": "MUJERES/Conjunto con top/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-con-top-halter",
+      "folder": "MUJERES/Conjunto con top halter/Azul Oscuro",
+      "color": "Azul Oscuro",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-con-top-halter",
+      "folder": "MUJERES/Conjunto con top halter/Marron",
+      "color": "Marron",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-con-top-halter",
+      "folder": "MUJERES/Conjunto con top halter/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "conjunto-con-top-halter",
+      "folder": "MUJERES/Conjunto con top halter/Rojo",
+      "color": "Rojo",
+      "images": 2
+    },
+    {
+      "productId": "enterizo-mujer",
+      "folder": "MUJERES/Enterizo/Marron",
+      "color": "Marron",
+      "images": 2
+    },
+    {
+      "productId": "enterizo-completo",
+      "folder": "MUJERES/Enterizo Completo/Azul Marino",
+      "color": "Azul Marino",
+      "images": 2
+    },
+    {
+      "productId": "enterizo-completo",
+      "folder": "MUJERES/Enterizo Completo/Marron",
+      "color": "Marron",
+      "images": 2
+    },
+    {
+      "productId": "enterizo-completo",
+      "folder": "MUJERES/Enterizo Completo/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "enterizo-corto",
+      "folder": "MUJERES/Enterizo Corto/Azul Oscuro",
+      "color": "Azul Oscuro",
+      "images": 2
+    },
+    {
+      "productId": "enterizo-corto",
+      "folder": "MUJERES/Enterizo Corto/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "enterizo-corto",
+      "folder": "MUJERES/Enterizo Corto/Vinotinto",
+      "color": "Vinotinto",
+      "images": 2
+    },
+    {
+      "productId": "enterizo-abierto-espalda",
+      "folder": "MUJERES/Enterizos Abierto Espalda/Gris",
+      "color": "Gris",
+      "images": 2
+    },
+    {
+      "productId": "enterizo-abierto-espalda",
+      "folder": "MUJERES/Enterizos Abierto Espalda/Marron",
+      "color": "Marron",
+      "images": 2
+    },
+    {
+      "productId": "enterizo-abierto-espalda",
+      "folder": "MUJERES/Enterizos Abierto Espalda/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "leggin-bota-campana",
+      "folder": "MUJERES/Leggins botacampana/Azul Marino",
+      "color": "Azul Marino",
+      "images": 2
+    },
+    {
+      "productId": "leggin-bota-campana",
+      "folder": "MUJERES/Leggins botacampana/Morado",
+      "color": "Morado",
+      "images": 2
+    },
+    {
+      "productId": "leggin-bota-campana",
+      "folder": "MUJERES/Leggins botacampana/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "leggin-bota-campana",
+      "folder": "MUJERES/Leggins botacampana/Rosado",
+      "color": "Rosado",
+      "images": 2
+    },
+    {
+      "productId": "leggin-bota-campana",
+      "folder": "MUJERES/Leggins botacampana/Vinotinto",
+      "color": "Vinotinto",
+      "images": 2
+    },
+    {
+      "productId": "leggings",
+      "folder": "MUJERES/Leggins push up/Azul Marino",
+      "color": "Azul Marino",
+      "images": 2
+    },
+    {
+      "productId": "leggings",
+      "folder": "MUJERES/Leggins push up/Marron",
+      "color": "Marron",
+      "images": 2
+    },
+    {
+      "productId": "leggings",
+      "folder": "MUJERES/Leggins push up/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "leggings",
+      "folder": "MUJERES/Leggins push up/Vinotinto",
+      "color": "Vinotinto",
+      "images": 2
+    },
+    {
+      "productId": "medias",
+      "folder": "MUJERES/Medias/Blanco Negro",
+      "color": "Blanco Negro",
+      "images": 1
+    },
+    {
+      "productId": "medias",
+      "folder": "MUJERES/Medias/Multicolor",
+      "color": "Multicolor",
+      "images": 1
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Azul Claro",
+      "color": "Azul Claro",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Azul Marino",
+      "color": "Azul Marino",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Blanco",
+      "color": "Blanco",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Celeste",
+      "color": "Celeste",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Fucsia",
+      "color": "Fucsia",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Gris",
+      "color": "Gris",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Lila",
+      "color": "Lila",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Marron",
+      "color": "Marron",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Morado",
+      "color": "Morado",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Rosado",
+      "color": "Rosado",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Verde Menta",
+      "color": "Verde Menta",
+      "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "MUJERES/Short push up/Vinotinto",
+      "color": "Vinotinto",
+      "images": 2
+    },
+    {
+      "productId": "tops-nuevos",
+      "folder": "MUJERES/Tops/Azul Marino",
+      "color": "Azul Marino",
+      "images": 2
+    },
+    {
+      "productId": "tops-nuevos",
+      "folder": "MUJERES/Tops/Blanco",
+      "color": "Blanco",
+      "images": 2
+    },
+    {
+      "productId": "tops-nuevos",
+      "folder": "MUJERES/Tops/Marron",
+      "color": "Marron",
+      "images": 2
+    },
+    {
+      "productId": "tops-nuevos",
+      "folder": "MUJERES/Tops/Negro",
+      "color": "Negro",
+      "images": 2
+    },
+    {
+      "productId": "tops-nuevos",
+      "folder": "MUJERES/Tops/Vinotinto",
+      "color": "Vinotinto",
+      "images": 2
+    },
+    {
+      "productId": "top-deportivo",
+      "folder": "MUJERES/Tops Deportivos/Negro Azul",
+      "color": "Negro Azul",
+      "images": 1
+    },
+    {
+      "productId": "top-deportivo",
+      "folder": "MUJERES/Tops Deportivos/Surtidos",
+      "color": "Surtidos",
+      "images": 1
+    }
+  ],
+  "skippedFolders": [
+    {
+      "folder": "accesorios",
+      "reason": "ignored-by-plan"
+    },
+    {
+      "folder": "MUJERES/Enterizo NUEVO TESTTTT",
+      "reason": "ignored-by-plan"
+    }
+  ]
+}

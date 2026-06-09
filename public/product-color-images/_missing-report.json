@@ -1,0 +1,416 @@
+{
+  "generatedAt": "2026-06-05T22:23:55.963Z",
+  "requirement": "Cada color visible de producto debe tener 2 fotos: frontal/adelante y espaldas/atras.",
+  "activeProductCount": 33,
+  "addedLocalColors": [
+    {
+      "product_id": "camisa-own-it",
+      "prenda": "Camisa OWN IT",
+      "color": "Gris"
+    },
+    {
+      "product_id": "camisa-own-it",
+      "prenda": "Camisa OWN IT",
+      "color": "Negro"
+    },
+    {
+      "product_id": "camisa-compresora-mujer",
+      "prenda": "Camisa",
+      "color": "Vinotinto"
+    },
+    {
+      "product_id": "chaqueta-mujer",
+      "prenda": "Chaqueta",
+      "color": "Azul"
+    },
+    {
+      "product_id": "conjunto-leggins-bota-campana",
+      "prenda": "Conjunto con Leggins Bota Campana",
+      "color": "Marron"
+    },
+    {
+      "product_id": "conjunto-short-y-bolsillos",
+      "prenda": "Conjunto con Short Y Bolsillo",
+      "color": "Morado"
+    },
+    {
+      "product_id": "enterizo-corto",
+      "prenda": "Enterizo Corto",
+      "color": "Vinotinto"
+    },
+    {
+      "product_id": "leggings",
+      "prenda": "Leggings Deportivo",
+      "color": "Vinotinto"
+    },
+    {
+      "product_id": "medias",
+      "prenda": "Medias Deportivas",
+      "color": "Blanco Negro"
+    },
+    {
+      "product_id": "medias",
+      "prenda": "Medias Deportivas",
+      "color": "Multicolor"
+    },
+    {
+      "product_id": "top-deportivo",
+      "prenda": "Top Deportivo",
+      "color": "Negro Azul"
+    },
+    {
+      "product_id": "top-deportivo",
+      "prenda": "Top Deportivo",
+      "color": "Surtidos"
+    }
+  ],
+  "missing": [
+    {
+      "product_id": "buzo-sin-manga-hombre",
+      "prenda": "Buzo Sin Manga",
+      "color": "Negro",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 1,
+      "carpeta_color": "Negro",
+      "source": "supabase"
+    },
+    {
+      "product_id": "camisa-deportiva-mujer",
+      "prenda": "Camisa compresora",
+      "color": "Azul",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "camisa-deportiva-mujer",
+      "prenda": "Camisa compresora",
+      "color": "Blanco",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "camisa-deportiva-mujer",
+      "prenda": "Camisa compresora",
+      "color": "Gris",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "camisa-deportiva-mujer",
+      "prenda": "Camisa compresora",
+      "color": "Negro",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "camisa-own-it",
+      "prenda": "Camisa OWN IT",
+      "color": "Azul",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "camisa-own-it",
+      "prenda": "Camisa OWN IT",
+      "color": "Blanco",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "camisa-compresora-sencillas",
+      "prenda": "Camisas Compresoras Sencillas",
+      "color": "Negro",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "enterizo-abierto-espalda",
+      "prenda": "Enterizo Abierto Espalda",
+      "color": "Café",
+      "falta": [
+        "frontal/adelante"
+      ],
+      "fotos_actuales": 2,
+      "carpeta_color": "Marron",
+      "source": "supabase"
+    },
+    {
+      "product_id": "enterizo-abierto-espalda",
+      "prenda": "Enterizo Abierto Espalda",
+      "color": "Gris",
+      "falta": [
+        "frontal/adelante"
+      ],
+      "fotos_actuales": 2,
+      "carpeta_color": "Gris",
+      "source": "supabase"
+    },
+    {
+      "product_id": "enterizo-abierto-espalda",
+      "prenda": "Enterizo Abierto Espalda",
+      "color": "Negro",
+      "falta": [
+        "frontal/adelante"
+      ],
+      "fotos_actuales": 2,
+      "carpeta_color": "Negro",
+      "source": "supabase"
+    },
+    {
+      "product_id": "leggings",
+      "prenda": "Leggings Deportivo",
+      "color": "Azul",
+      "falta": [
+        "frontal/adelante"
+      ],
+      "fotos_actuales": 2,
+      "carpeta_color": "Azul Marino",
+      "source": "supabase"
+    },
+    {
+      "product_id": "leggings",
+      "prenda": "Leggings Deportivo",
+      "color": "Café",
+      "falta": [
+        "frontal/adelante"
+      ],
+      "fotos_actuales": 2,
+      "carpeta_color": "Marron",
+      "source": "supabase"
+    },
+    {
+      "product_id": "leggings",
+      "prenda": "Leggings Deportivo",
+      "color": "Negro",
+      "falta": [
+        "frontal/adelante"
+      ],
+      "fotos_actuales": 2,
+      "carpeta_color": "Negro",
+      "source": "supabase"
+    },
+    {
+      "product_id": "leggings",
+      "prenda": "Leggings Deportivo",
+      "color": "Vinotinto",
+      "falta": [
+        "frontal/adelante"
+      ],
+      "fotos_actuales": 2,
+      "carpeta_color": "Vinotinto",
+      "source": "local-image"
+    },
+    {
+      "product_id": "medias",
+      "prenda": "Medias Deportivas",
+      "color": "Blanco",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "medias",
+      "prenda": "Medias Deportivas",
+      "color": "Blanco Negro",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 1,
+      "carpeta_color": "Blanco Negro",
+      "source": "local-image"
+    },
+    {
+      "product_id": "medias",
+      "prenda": "Medias Deportivas",
+      "color": "Gris",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "medias",
+      "prenda": "Medias Deportivas",
+      "color": "Multicolor",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 1,
+      "carpeta_color": "Multicolor",
+      "source": "local-image"
+    },
+    {
+      "product_id": "medias",
+      "prenda": "Medias Deportivas",
+      "color": "Negro",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "pantaloneta-deportiva",
+      "prenda": "Pantaloneta Deportiva",
+      "color": "Negro",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "sin-manga-doble-lineas",
+      "prenda": "Sin manga doble lineas",
+      "color": "Negro",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 2,
+      "carpeta_color": "Negro",
+      "source": "supabase"
+    },
+    {
+      "product_id": "sudadera-deportiva",
+      "prenda": "Sudadera Deportiva",
+      "color": "Negro",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "top-deportivo",
+      "prenda": "Top Deportivo",
+      "color": "Azul",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "top-deportivo",
+      "prenda": "Top Deportivo",
+      "color": "Blanco",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "top-deportivo",
+      "prenda": "Top Deportivo",
+      "color": "Gris Claro",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "top-deportivo",
+      "prenda": "Top Deportivo",
+      "color": "Negro",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 0,
+      "carpeta_color": null,
+      "source": "supabase"
+    },
+    {
+      "product_id": "top-deportivo",
+      "prenda": "Top Deportivo",
+      "color": "Negro Azul",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 1,
+      "carpeta_color": "Negro Azul",
+      "source": "local-image"
+    },
+    {
+      "product_id": "top-deportivo",
+      "prenda": "Top Deportivo",
+      "color": "Surtidos",
+      "falta": [
+        "frontal/adelante",
+        "espaldas/atras"
+      ],
+      "fotos_actuales": 1,
+      "carpeta_color": "Surtidos",
+      "source": "local-image"
+    }
+  ],
+  "summary": {
+    "addedLocalColors": 12,
+    "variantsWithMissingImages": 29,
+    "missingBothSides": 22,
+    "missingOneSide": 7
+  }
+}

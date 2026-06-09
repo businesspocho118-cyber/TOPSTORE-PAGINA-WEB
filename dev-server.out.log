@@ -1,0 +1,21 @@
+
+> topstore-web@1.0.0 dev
+> next dev -p 3005 -H 0.0.0.0
+
+   ▲ Next.js 15.5.18
+   - Local:        http://localhost:3005
+   - Network:      http://0.0.0.0:3005
+   - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 2.3s
+ ○ Compiling / ...
+ ✓ Compiled / in 2.1s (1788 modules)
+ GET / 200 in 3097ms
+[TOPSTORE] Loaded 8 products for filters: {"limit":8}
+[TOPSTORE] Loaded 8 products for filters: {"limit":8}
+ GET / 200 in 398ms
+[TOPSTORE] Loaded 8 products for filters: {"limit":8}
+ GET / 200 in 527ms
+[TOPSTORE] Loaded 8 products for filters: {"limit":8}
+ GET / 200 in 1522ms

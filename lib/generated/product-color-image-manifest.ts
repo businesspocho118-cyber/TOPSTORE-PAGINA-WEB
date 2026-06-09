@@ -969,7 +969,7 @@ export const productColorImageManifest = {
       "colorLabel": "Azul",
       "colorKey": "azul",
       "images": [
-        "/product-color-images/top-deportivo/AZUL/2e19a5fa-9814-4838-ad0e-3352cae58fcd - copia.png",
+        "/product-color-images/top-deportivo/AZUL/2e19a5fa-9814-4838-ad0e-3352cae58fcd-copia.png",
         "/product-color-images/top-deportivo/AZUL/2e19a5fa-9814-4838-ad0e-3352cae58fcd.png"
       ]
     },
@@ -979,7 +979,7 @@ export const productColorImageManifest = {
       "colorLabel": "Negro",
       "colorKey": "negro",
       "images": [
-        "/product-color-images/top-deportivo/NEGRO/6e3aac70-dc53-4cf1-809f-6450736cd3f8 - copia.png",
+        "/product-color-images/top-deportivo/NEGRO/6e3aac70-dc53-4cf1-809f-6450736cd3f8-copia.png",
         "/product-color-images/top-deportivo/NEGRO/6e3aac70-dc53-4cf1-809f-6450736cd3f8.png"
       ]
     },
@@ -989,7 +989,7 @@ export const productColorImageManifest = {
       "colorLabel": "Blanco",
       "colorKey": "blanco",
       "images": [
-        "/product-color-images/top-deportivo/BLANCO/1beb521e-4eb5-4ee1-ba4f-b9a75d9b36dc (1).png",
+        "/product-color-images/top-deportivo/BLANCO/1beb521e-4eb5-4ee1-ba4f-b9a75d9b36dc-1.png",
         "/product-color-images/top-deportivo/BLANCO/1beb521e-4eb5-4ee1-ba4f-b9a75d9b36dc.png"
       ]
     },
@@ -999,8 +999,8 @@ export const productColorImageManifest = {
       "colorLabel": "Café",
       "colorKey": "cafe",
       "images": [
-        "/product-color-images/top-deportivo/CAFÉ/bb4101a9-4046-4e7f-8dd4-538b1946e8de (1).png",
-        "/product-color-images/top-deportivo/CAFÉ/bb4101a9-4046-4e7f-8dd4-538b1946e8de.png"
+        "/product-color-images/top-deportivo/cafe/bb4101a9-4046-4e7f-8dd4-538b1946e8de-1.png",
+        "/product-color-images/top-deportivo/cafe/bb4101a9-4046-4e7f-8dd4-538b1946e8de.png"
       ]
     },
     "gris": {
@@ -1009,7 +1009,7 @@ export const productColorImageManifest = {
       "colorLabel": "Gris",
       "colorKey": "gris",
       "images": [
-        "/product-color-images/top-deportivo/GRIS/9539b72a-e81b-4634-a0d1-7451dc2ecb4d (1).png",
+        "/product-color-images/top-deportivo/GRIS/9539b72a-e81b-4634-a0d1-7451dc2ecb4d-1.png",
         "/product-color-images/top-deportivo/GRIS/9539b72a-e81b-4634-a0d1-7451dc2ecb4d.png"
       ]
     },
@@ -1019,9 +1019,9 @@ export const productColorImageManifest = {
       "colorLabel": "Pack de 3",
       "colorKey": "pack3",
       "images": [
-        "/product-color-images/top-deportivo/PACK 3/7398c35b-7ebe-414d-acb5-e3da3ceb3cbe.png",
-        "/product-color-images/top-deportivo/PACK 3/aced0dcc-66e5-4aa2-acb8-939b59a8963b.png",
-        "/product-color-images/top-deportivo/PACK 3/image.png"
+        "/product-color-images/top-deportivo/pack3/7398c35b-7ebe-414d-acb5-e3da3ceb3cbe.png",
+        "/product-color-images/top-deportivo/pack3/aced0dcc-66e5-4aa2-acb8-939b59a8963b.png",
+        "/product-color-images/top-deportivo/pack3/image.png"
       ]
     }
   }

@@ -4,6 +4,7 @@ import { ProductDetailClient } from '@/components/products/ProductDetailClient'
 import { getProductByProductId, getProductIds } from '@/lib/products'
 import { getFirstImage } from '@/lib/utils'
 
+export const runtime = 'edge'
 export const revalidate = 60
 
 type ProductPageProps = {

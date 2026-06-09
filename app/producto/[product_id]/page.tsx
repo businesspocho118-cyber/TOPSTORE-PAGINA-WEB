@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { ProductDetailClient } from '@/components/products/ProductDetailClient'
-import { getProductByProductId, getProductIds } from '@/lib/products'
+import { getProductByProductId } from '@/lib/products'
 import { getFirstImage } from '@/lib/utils'
 
-export const runtime = 'edge'
 export const runtime = 'edge'
 
 type ProductPageProps = {

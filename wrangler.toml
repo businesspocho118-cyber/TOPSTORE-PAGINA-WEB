@@ -3,5 +3,8 @@ compatibility_date = "2026-06-09"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "_worker.js"
 
+[build]
+command = "npm run pages:build"
+
 [vars]
 STORE_REVALIDATE_TOKEN = "token_secreto_compartido_con_la_tienda"

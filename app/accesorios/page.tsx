@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description: 'Accesorios deportivos premium TOPSTORE para complementar tu entrenamiento. Envíos a toda Colombia.'
 }
 
+export const dynamic = 'force-dynamic'
 export const revalidate = 60
 
 export default function AccesoriosPage() {

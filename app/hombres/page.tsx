@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: 'Camisas, buzos, joggers y ropa deportiva premium para hombres en Colombia. Envíos nacionales desde Pasto.'
 }
 
+export const dynamic = 'force-dynamic'
 export const revalidate = 60
 
 export default function HombresPage() {

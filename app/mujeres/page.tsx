@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: 'Leggins, conjuntos, tops y ropa deportiva premium para mujeres en Colombia. Envíos a todo el país.'
 }
 
+export const dynamic = 'force-dynamic'
 export const revalidate = 60
 
 export default function MujeresPage() {

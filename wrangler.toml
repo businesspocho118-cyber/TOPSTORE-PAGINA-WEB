@@ -2,3 +2,10 @@ name = "topstore-pagina-web"
 compatibility_date = "2026-06-09"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
+
+[vars]
+NEXT_PUBLIC_SUPABASE_URL = "https://mwilpokulvssoomdytyk.supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY = "sb_publishable_OiJCm8hcQSKavJXEOhpwSw_-tRabEWn"
+NEXT_PUBLIC_WHATSAPP_NUMBER = "3205172484"
+NEXT_PUBLIC_SITE_URL = "https://topstore.co"
+STORE_REVALIDATE_TOKEN = "token_secreto_compartido_con_la_tienda"

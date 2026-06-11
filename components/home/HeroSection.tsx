@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { ArrowDown, ShieldCheck, Sparkles, Truck } from 'lucide-react'
+import { MessageCircle, ShieldCheck, Sparkles, Truck } from 'lucide-react'
 import { useEffect, useMemo, useRef } from 'react'
 import { getProductColorImageVariant } from '@/lib/product-color-images'
 import { prefersReducedMotion, registerGsapPlugins } from '@/lib/gsap-client'
@@ -105,21 +105,21 @@ export function HeroSection() {
           </div>
 
           <h1 ref={titleRef} className={styles.title}>
-            Ropa deportiva premium en Colombia
+            Ropa Deportiva Colombia
           </h1>
 
           <p data-hero-copy className={styles.lead}>
-            Prendas para gimnasio, entrenamiento funcional y vida activa. Compra online con envíos a Pasto, Bogotá,
-            Medellín y toda Colombia.
+            Prendas premium para hombre y mujer, pensadas para gimnasio, entrenamiento funcional y vida activa. Compra
+            online con envíos a Pasto, Bogotá, Medellín y toda Colombia.
           </p>
 
           <div data-hero-copy className={styles.actions}>
             <a href="#productos" className="btn-primary">
               Ver colección
             </a>
-            <a href="#categorias" className={styles.textLink}>
-              Explorar categorías
-              <ArrowDown size={16} aria-hidden />
+            <a href="#asesoria" className={styles.advisorLink}>
+              <MessageCircle size={17} aria-hidden />
+              Hablar con un asesor
             </a>
           </div>
 

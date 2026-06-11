@@ -1,12 +1,18 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { MessageCircle } from 'lucide-react'
 import FloatingPathsTopstore from '@/components/FloatingPathsTopstore'
+import { buildWhatsAppConversationUrl } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
   title: 'Nosotros',
   description: 'Conoce la historia de TOPSTORE, tienda colombiana de ropa deportiva premium con envíos nacionales.'
 }
+
+const advisorUrl = buildWhatsAppConversationUrl(
+  'Hola TOPSTORE, quiero hablar con un asesor para resolver una duda sobre las prendas, tallas o disponibilidad.'
+)
 
 export default function NosotrosPage() {
   return (
@@ -42,6 +48,10 @@ export default function NosotrosPage() {
             </div>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row">
               <Link href="/#productos" className="btn-primary">Ver colección</Link>
+              <Link href={advisorUrl} className="btn-secondary gap-2" target="_blank" rel="noreferrer">
+                <MessageCircle size={18} aria-hidden />
+                Hablar con un asesor
+              </Link>
               <Link href="https://www.instagram.com/topstore_18/" className="btn-secondary" target="_blank" rel="noreferrer">
                 Instagram
               </Link>

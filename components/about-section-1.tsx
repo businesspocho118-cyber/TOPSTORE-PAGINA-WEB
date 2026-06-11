@@ -2,13 +2,18 @@
 
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, MessageCircle } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 import { prefersReducedMotion, registerGsapPlugins } from '@/lib/gsap-client'
+import { buildWhatsAppConversationUrl } from '@/lib/whatsapp'
 
 const RaycastAnimatedBackground = dynamic(
   () => import('@/components/raycast-animated-background').then((mod) => mod.RaycastAnimatedBackground),
   { ssr: false }
+)
+
+const advisorUrl = buildWhatsAppConversationUrl(
+  'Hola TOPSTORE, tengo una duda y me gustaría hablar con un asesor sobre las prendas, tallas o disponibilidad.'
 )
 
 export default function AboutSection1() {
@@ -49,7 +54,7 @@ export default function AboutSection1() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen overflow-hidden bg-ink px-4 py-32 text-white">
+    <section id="asesoria" ref={sectionRef} className="relative min-h-screen scroll-mt-20 overflow-hidden bg-ink px-4 py-32 text-white">
       <div className="about-raycast absolute inset-0 opacity-35 mix-blend-screen">
         <RaycastAnimatedBackground />
       </div>
@@ -72,12 +77,23 @@ export default function AboutSection1() {
           durabilidad y estilo. Nuestros clientes nos respaldan: sus reseñas son nuestra mayor vitrina.
         </p>
 
-        <Link
-          href="/nosotros"
-          className="about-reveal mt-10 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3 text-sm font-bold uppercase tracking-[0.14em] text-ink transition hover:gap-4 hover:bg-champagne"
-        >
-          Conocer la marca <ArrowRight size={18} aria-hidden />
-        </Link>
+        <div className="about-reveal mt-10 flex w-full max-w-xl flex-col items-stretch justify-center gap-3 sm:flex-row">
+          <Link
+            href={advisorUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-gold px-7 py-3 text-sm font-bold uppercase tracking-[0.14em] text-ink shadow-gold transition hover:-translate-y-1 hover:bg-champagne"
+          >
+            <MessageCircle size={19} aria-hidden />
+            Hablar con un asesor
+          </Link>
+          <Link
+            href="/nosotros"
+            className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-7 py-3 text-sm font-bold uppercase tracking-[0.14em] text-white transition hover:border-gold hover:bg-white/15 hover:text-champagne"
+          >
+            Conocer la marca <ArrowRight size={18} aria-hidden />
+          </Link>
+        </div>
       </div>
     </section>
   )

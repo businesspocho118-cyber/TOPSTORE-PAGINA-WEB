@@ -1,6 +1,6 @@
 import { z } from 'zod'
-import { env } from '@/lib/env'
 import { formatCOP, parsePriceToNumber } from '@/lib/utils'
+import { buildWhatsAppConversationUrl } from '@/lib/whatsapp'
 
 export const cartItemSchema = z.object({
   product_id: z.string().trim().min(1),
@@ -25,12 +25,6 @@ export function calculateCartTotal(items: CartItem[]) {
   return items.reduce((total, item) => total + parsePriceToNumber(item.precio) * item.cantidad, 0)
 }
 
-function normalizeWhatsAppNumber(phone: string) {
-  const digits = phone.replace(/\D/g, '')
-  if (digits.startsWith('57')) return digits
-  return `57${digits}`
-}
-
 export function buildWhatsAppCheckoutUrl(items: CartItem[]) {
   const parsed = cartSchema.safeParse(items)
   if (!parsed.success || parsed.data.length === 0) {
@@ -52,6 +46,5 @@ export function buildWhatsAppCheckoutUrl(items: CartItem[]) {
     '📦 Por favor indíquenme disponibilidad y datos de envío.'
   ].join('\n')
 
-  const phone = normalizeWhatsAppNumber(env.whatsappNumber)
-  return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+  return buildWhatsAppConversationUrl(message)
 }

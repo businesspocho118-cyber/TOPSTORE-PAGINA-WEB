@@ -1,10 +1,6 @@
 import type { NextConfig } from 'next'
 import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev'
 
-if (process.env.NODE_ENV === 'development') {
-  await setupDevPlatform()
-}
-
 const csp = [
   "default-src 'self'",
   "base-uri 'self'",
@@ -29,18 +25,22 @@ const securityHeaders = [
   { key: 'Content-Security-Policy', value: csp }
 ]
 
-const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [{ protocol: 'https', hostname: '**' }]
-  },
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: securityHeaders
-      }
-    ]
+export default async function nextConfig(): Promise<NextConfig> {
+  if (process.env.NODE_ENV === 'development') {
+    await setupDevPlatform()
+  }
+
+  return {
+    images: {
+      remotePatterns: [{ protocol: 'https', hostname: '**' }]
+    },
+    async headers() {
+      return [
+        {
+          source: '/(.*)',
+          headers: securityHeaders
+        }
+      ]
+    }
   }
 }
-
-export default nextConfig

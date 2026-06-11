@@ -5,8 +5,8 @@
     "accesorios",
     "MUJERES/Enterizo NUEVO TESTTTT"
   ],
-  "copiedImageCount": 179,
-  "mappedVariantCount": 92,
+  "copiedImageCount": 181,
+  "mappedVariantCount": 93,
   "mappedProductCount": 29,
   "mappedFolders": [
     {
@@ -560,6 +560,12 @@
       "folder": "MUJERES/Tops Deportivos/Surtidos",
       "color": "Surtidos",
       "images": 1
+    },
+    {
+      "productId": "top-deportivo",
+      "folder": "Camel",
+      "color": "Camel",
+      "images": 2
     }
   ],
   "skippedFolders": [
@@ -570,6 +576,10 @@
     {
       "folder": "MUJERES/Enterizo NUEVO TESTTTT",
       "reason": "ignored-by-plan"
+    },
+    {
+      "folder": "C:\\Users\\JOHANPRO\\Desktop\\FOTOS PRENDAS NUEVO",
+      "reason": "primary-source-unavailable"
     }
   ]
 }

@@ -18,6 +18,7 @@ const localSwatches: Record<string, string> = {
   burdeos: '#7f1d1d',
   cafe: '#7c4a2d',
   cafesuave: '#b08a65',
+  camel: '#C19A6B',
   celeste: '#b3ebf2',
   fucsia: '#ff00ff',
   gris: '#9ca3af',

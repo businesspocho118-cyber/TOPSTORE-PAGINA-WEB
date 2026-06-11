@@ -4,12 +4,15 @@ import { getProducts } from '@/lib/products'
 import type { ProductGender } from '@/types/database.types'
 
 const categories = [
+  { label: 'Audífonos', keywords: ['audifono', 'audifonos'], color: 'text-sky-600', bar: 'bg-sky-500' },
+  { label: 'Tarros', keywords: ['tarro'], color: 'text-amber-600', bar: 'bg-amber-500' },
   { label: 'Camisas', keywords: ['camisa', 'camiseta', 'sin manga', 'tirante', 'workout', 'alpha', 'manga'], color: 'text-blue-600', bar: 'bg-blue-500' },
   { label: 'Conjuntos', keywords: ['conjunto'], color: 'text-violet-600', bar: 'bg-violet-500' },
   { label: 'Shorts', keywords: ['short', 'pantaloneta'], color: 'text-emerald-600', bar: 'bg-emerald-500' },
   { label: 'Enterizos', keywords: ['enterizo'], color: 'text-pink-600', bar: 'bg-pink-500' },
   { label: 'Leggins', keywords: ['leggin', 'legging'], color: 'text-orange-600', bar: 'bg-orange-500' },
-  { label: 'Buzos', keywords: ['buzo', 'sudadera'], color: 'text-cyan-600', bar: 'bg-cyan-500' },
+  { label: 'Sudaderas', keywords: ['sudadera'], color: 'text-teal-600', bar: 'bg-teal-500' },
+  { label: 'Buzos', keywords: ['buzo'], color: 'text-cyan-600', bar: 'bg-cyan-500' },
   { label: 'Chaquetas', keywords: ['chaqueta'], color: 'text-yellow-600', bar: 'bg-yellow-500' },
   { label: 'Tops', keywords: ['top'], color: 'text-rose-600', bar: 'bg-rose-500' },
   { label: 'Medias', keywords: ['media', 'medias'], color: 'text-indigo-600', bar: 'bg-indigo-500' },
@@ -21,8 +24,8 @@ function normalize(val: string) {
   return val.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 }
 
-function inferCategory(product: { nombre: string }) {
-  const name = normalize(product.nombre)
+function inferCategory(product: { nombre: string; categoria?: string | null }) {
+  const name = normalize(`${product.categoria ?? ''} ${product.nombre}`)
   for (const cat of categories) {
     if (cat.keywords.some((kw) => name.includes(kw))) return cat
   }
@@ -105,13 +108,17 @@ export async function CategoryProductGrid({ genero }: { genero: ProductGender })
         }
 
         // Normal category rendering
+        const itemLabel = genero === 'accesorios'
+          ? products.length === 1 ? 'producto' : 'productos'
+          : products.length === 1 ? 'prenda' : 'prendas'
+
         return (
           <div key={cat.label}>
             <div className="mb-6 flex items-center gap-4">
               <div className={`h-1 w-10 rounded-full ${cat.bar}`} aria-hidden />
               <h2 className="font-display text-3xl uppercase tracking-[0.14em] text-ink sm:text-4xl">{cat.label}</h2>
               <span className={`text-sm font-bold uppercase tracking-[0.16em] ${cat.color}`}>
-                {products.length} {products.length === 1 ? 'prenda' : 'prendas'}
+                {products.length} {itemLabel}
               </span>
             </div>
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

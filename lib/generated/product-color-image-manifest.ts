@@ -1023,6 +1023,16 @@ export const productColorImageManifest = {
         "/product-color-images/top-deportivo/pack3/aced0dcc-66e5-4aa2-acb8-939b59a8963b.png",
         "/product-color-images/top-deportivo/pack3/image.png"
       ]
+    },
+    "camel": {
+      "productId": "top-deportivo",
+      "productFolder": "Camel",
+      "colorLabel": "Camel",
+      "colorKey": "camel",
+      "images": [
+        "/product-color-images/top-deportivo/camel/01-top-deportivo-camel-frontal.png",
+        "/product-color-images/top-deportivo/camel/02-top-deportivo-camel-espalda.png"
+      ]
     }
   }
 } as const satisfies Record<string, Record<string, ProductColorImageVariant>>
@@ -1034,8 +1044,8 @@ export const productColorImageReport = {
     "accesorios",
     "MUJERES/Enterizo NUEVO TESTTTT"
   ],
-  "copiedImageCount": 179,
-  "mappedVariantCount": 92,
+  "copiedImageCount": 181,
+  "mappedVariantCount": 93,
   "mappedProductCount": 29,
   "mappedFolders": [
     {
@@ -1589,6 +1599,12 @@ export const productColorImageReport = {
       "folder": "MUJERES/Tops Deportivos/Surtidos",
       "color": "Surtidos",
       "images": 1
+    },
+    {
+      "productId": "top-deportivo",
+      "folder": "Camel",
+      "color": "Camel",
+      "images": 2
     }
   ],
   "skippedFolders": [
@@ -1599,6 +1615,10 @@ export const productColorImageReport = {
     {
       "folder": "MUJERES/Enterizo NUEVO TESTTTT",
       "reason": "ignored-by-plan"
+    },
+    {
+      "folder": "C:\\Users\\JOHANPRO\\Desktop\\FOTOS PRENDAS NUEVO",
+      "reason": "primary-source-unavailable"
     }
   ]
 } as const

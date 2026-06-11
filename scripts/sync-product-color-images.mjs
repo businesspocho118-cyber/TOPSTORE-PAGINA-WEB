@@ -8,6 +8,24 @@ const targetRoot = path.join(publicRoot, 'product-color-images')
 const generatedFile = path.join(workspaceRoot, 'lib', 'generated', 'product-color-image-manifest.ts')
 const reportFile = path.join(targetRoot, '_report.json')
 
+const supplementalVariants = [
+  {
+    productId: 'top-deportivo',
+    productFolder: 'Camel',
+    colorLabel: 'Camel',
+    images: [
+      {
+        source: 'C:\\Users\\JOHANPRO\\Desktop\\Camel\\ec27cec6-168f-4411-b793-77e26e7ae956.png',
+        target: '01-top-deportivo-camel-frontal.png',
+      },
+      {
+        source: 'C:\\Users\\JOHANPRO\\Desktop\\Camel\\ec27cec6-168f-4411-b793-77e26e7ae956 - copia.png',
+        target: '02-top-deportivo-camel-espalda.png',
+      },
+    ],
+  },
+]
+
 const folderToProductId = new Map(Object.entries({
   'HOMBRES/buzo compresor hombre': 'buzo-compresor-hombre',
   'HOMBRES/camiseta compresora hombre': 'camisa-compresora-sencillas',
@@ -126,16 +144,15 @@ function assertSafeTarget() {
 async function main() {
   assertSafeTarget()
 
-  if (!(await exists(sourceRoot))) {
-    throw new Error(`Source image folder not found: ${sourceRoot}`)
+  const hasPrimarySource = await exists(sourceRoot)
+  if (hasPrimarySource) {
+    await fs.rm(targetRoot, { recursive: true, force: true })
   }
-
-  await fs.rm(targetRoot, { recursive: true, force: true })
   await fs.mkdir(targetRoot, { recursive: true })
   await fs.mkdir(path.dirname(generatedFile), { recursive: true })
 
-  const manifest = {}
-  const report = {
+  let manifest = {}
+  let report = {
     sourceRoot,
     targetRoot,
     ignored: ['accesorios', 'MUJERES/Enterizo NUEVO TESTTTT'],
@@ -146,7 +163,30 @@ async function main() {
     skippedFolders: [],
   }
 
-  for (const gender of await listDirectories(sourceRoot)) {
+  if (!hasPrimarySource && !(await exists(generatedFile))) {
+    throw new Error(`Primary source and existing manifest are both unavailable: ${sourceRoot}`)
+  }
+
+  if (!hasPrimarySource) {
+    const generatedSource = await fs.readFile(generatedFile, 'utf8')
+    const prefix = 'export const productColorImageManifest = '
+    const suffix = ' as const satisfies Record<string, Record<string, ProductColorImageVariant>>'
+    const start = generatedSource.indexOf(prefix)
+    const end = generatedSource.indexOf(suffix, start)
+    if (start < 0 || end <= start) {
+      throw new Error(`Could not recover the existing image manifest from: ${generatedFile}`)
+    }
+    manifest = JSON.parse(generatedSource.slice(start + prefix.length, end))
+
+    if (await exists(reportFile)) {
+      report = JSON.parse(await fs.readFile(reportFile, 'utf8'))
+    }
+
+    report.skippedFolders = (report.skippedFolders ?? []).filter((item) => item.reason !== 'primary-source-unavailable')
+    report.skippedFolders.push({ folder: sourceRoot, reason: 'primary-source-unavailable' })
+  }
+
+  for (const gender of hasPrimarySource ? await listDirectories(sourceRoot) : []) {
     if (ignoredPathParts.has(gender)) {
       report.skippedFolders.push({ folder: gender, reason: 'ignored-by-plan' })
       continue
@@ -207,6 +247,58 @@ async function main() {
         })
       }
     }
+  }
+
+  for (const variant of supplementalVariants) {
+    const missingSources = []
+    for (const image of variant.images) {
+      if (!(await exists(image.source))) missingSources.push(image.source)
+    }
+
+    if (missingSources.length > 0) {
+      report.skippedFolders.push({
+        folder: variant.productFolder,
+        reason: `missing-supplemental-images: ${missingSources.join(', ')}`,
+      })
+      continue
+    }
+
+    const previous = (report.mappedFolders ?? []).find(
+      (item) => item.productId === variant.productId && normalizeColorKey(item.color) === normalizeColorKey(variant.colorLabel)
+    )
+    if (previous) {
+      report.copiedImageCount = Math.max(0, report.copiedImageCount - previous.images)
+      report.mappedVariantCount = Math.max(0, report.mappedVariantCount - 1)
+      report.mappedFolders = report.mappedFolders.filter((item) => item !== previous)
+    }
+
+    const colorSlug = slugify(variant.colorLabel)
+    const productTargetDir = path.join(targetRoot, variant.productId, colorSlug)
+    await fs.mkdir(productTargetDir, { recursive: true })
+
+    const copiedImages = []
+    for (const image of variant.images) {
+      const targetPath = path.join(productTargetDir, image.target)
+      await fs.copyFile(image.source, targetPath)
+      copiedImages.push(toPublicPath(targetPath))
+      report.copiedImageCount += 1
+    }
+
+    manifest[variant.productId] ??= {}
+    manifest[variant.productId][normalizeColorKey(variant.colorLabel)] = {
+      productId: variant.productId,
+      productFolder: variant.productFolder,
+      colorLabel: variant.colorLabel,
+      colorKey: normalizeColorKey(variant.colorLabel),
+      images: copiedImages,
+    }
+    report.mappedVariantCount += 1
+    report.mappedFolders.push({
+      productId: variant.productId,
+      folder: variant.productFolder,
+      color: variant.colorLabel,
+      images: copiedImages.length,
+    })
   }
 
   report.mappedProductCount = Object.keys(manifest).length

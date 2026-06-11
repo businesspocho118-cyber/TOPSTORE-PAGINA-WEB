@@ -1,7 +1,8 @@
 ﻿import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { CatalogBackdrop } from '@/components/products/CatalogBackdrop'
-import { ProductGrid, ProductGridSkeleton } from '@/components/products/ProductGrid'
+import { CategoryProductGrid } from '@/components/products/CategoryProductGrid'
+import { ProductGridSkeleton } from '@/components/products/ProductGrid'
 
 export const metadata: Metadata = {
   title: 'Accesorios deportivos',
@@ -25,7 +26,7 @@ export default function AccesoriosPage() {
         </div>
         <div className="mt-12">
           <Suspense fallback={<ProductGridSkeleton />}>
-            <ProductGrid genero="accesorios" limit={12} />
+            <CategoryProductGrid genero="accesorios" />
           </Suspense>
         </div>
       </div>

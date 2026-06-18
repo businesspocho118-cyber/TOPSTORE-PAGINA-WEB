@@ -5,8 +5,8 @@
     "accesorios",
     "MUJERES/Enterizo NUEVO TESTTTT"
   ],
-  "copiedImageCount": 181,
-  "mappedVariantCount": 93,
+  "copiedImageCount": 183,
+  "mappedVariantCount": 94,
   "mappedProductCount": 29,
   "mappedFolders": [
     {
@@ -566,6 +566,12 @@
       "folder": "Camel",
       "color": "Camel",
       "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "ROJO",
+      "color": "Rojo",
+      "images": 2
     }
   ],
   "skippedFolders": [
@@ -580,6 +586,10 @@
     {
       "folder": "C:\\Users\\JOHANPRO\\Desktop\\FOTOS PRENDAS NUEVO",
       "reason": "primary-source-unavailable"
+    },
+    {
+      "folder": "Camel",
+      "reason": "missing-supplemental-images: C:\\Users\\JOHANPRO\\Desktop\\Camel\\ec27cec6-168f-4411-b793-77e26e7ae956.png, C:\\Users\\JOHANPRO\\Desktop\\Camel\\ec27cec6-168f-4411-b793-77e26e7ae956 - copia.png"
     }
   ]
 }

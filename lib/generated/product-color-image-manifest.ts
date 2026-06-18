@@ -908,6 +908,16 @@ export const productColorImageManifest = {
         "/product-color-images/short-push-up-corte-en-v/vinotinto/01-short-push-up-rojo-frontal.jpeg",
         "/product-color-images/short-push-up-corte-en-v/vinotinto/02-short-push-up-rojo-espalda.jpeg"
       ]
+    },
+    "rojo": {
+      "productId": "short-push-up-corte-en-v",
+      "productFolder": "ROJO",
+      "colorLabel": "Rojo",
+      "colorKey": "rojo",
+      "images": [
+        "/product-color-images/short-push-up-corte-en-v/rojo/01-short-push-up-rojo-frontal.png",
+        "/product-color-images/short-push-up-corte-en-v/rojo/02-short-push-up-rojo-espalda.png"
+      ]
     }
   },
   "tops-nuevos": {
@@ -1044,8 +1054,8 @@ export const productColorImageReport = {
     "accesorios",
     "MUJERES/Enterizo NUEVO TESTTTT"
   ],
-  "copiedImageCount": 181,
-  "mappedVariantCount": 93,
+  "copiedImageCount": 183,
+  "mappedVariantCount": 94,
   "mappedProductCount": 29,
   "mappedFolders": [
     {
@@ -1605,6 +1615,12 @@ export const productColorImageReport = {
       "folder": "Camel",
       "color": "Camel",
       "images": 2
+    },
+    {
+      "productId": "short-push-up-corte-en-v",
+      "folder": "ROJO",
+      "color": "Rojo",
+      "images": 2
     }
   ],
   "skippedFolders": [
@@ -1619,6 +1635,10 @@ export const productColorImageReport = {
     {
       "folder": "C:\\Users\\JOHANPRO\\Desktop\\FOTOS PRENDAS NUEVO",
       "reason": "primary-source-unavailable"
+    },
+    {
+      "folder": "Camel",
+      "reason": "missing-supplemental-images: C:\\Users\\JOHANPRO\\Desktop\\Camel\\ec27cec6-168f-4411-b793-77e26e7ae956.png, C:\\Users\\JOHANPRO\\Desktop\\Camel\\ec27cec6-168f-4411-b793-77e26e7ae956 - copia.png"
     }
   ]
 } as const

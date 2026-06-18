@@ -10,6 +10,21 @@ const reportFile = path.join(targetRoot, '_report.json')
 
 const supplementalVariants = [
   {
+    productId: 'short-push-up-corte-en-v',
+    productFolder: 'ROJO',
+    colorLabel: 'Rojo',
+    images: [
+      {
+        source: 'C:\\Users\\JOHANPRO\\Desktop\\ROJO\\d7ffdc90-13f8-4b33-b725-90d1d33b9111.png',
+        target: '01-short-push-up-rojo-frontal.png',
+      },
+      {
+        source: 'C:\\Users\\JOHANPRO\\Desktop\\ROJO\\d7ffdc90-13f8-4b33-b725-90d1d33b9111 (1).png',
+        target: '02-short-push-up-rojo-espalda.png',
+      },
+    ],
+  },
+  {
     productId: 'top-deportivo',
     productFolder: 'Camel',
     colorLabel: 'Camel',

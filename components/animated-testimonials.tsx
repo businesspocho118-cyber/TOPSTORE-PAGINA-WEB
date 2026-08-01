@@ -1,6 +1,6 @@
 'use client'
 
-import { ChevronLeft, ChevronRight, MessageCircle, Quote, ShieldCheck, Star } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Quote, ShieldCheck, Star } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { prefersReducedMotion, registerGsapPlugins } from '@/lib/gsap-client'
 import styles from './animated-testimonials.module.css'
@@ -33,7 +33,7 @@ export function AnimatedTestimonials({
   const quoteRef = useRef<HTMLDivElement>(null)
 
   const active = testimonials[activeIndex]
-  const previewItems = useMemo(() => testimonials.slice(0, 6), [testimonials])
+  const marqueeItems = useMemo(() => [...testimonials, ...testimonials], [testimonials])
 
   useEffect(() => {
     if (autoRotateInterval <= 0 || testimonials.length <= 1) return
@@ -118,7 +118,7 @@ export function AnimatedTestimonials({
               calificación
             </span>
             <span>
-              <strong>{testimonials.length}</strong>
+              <strong>+50</strong>
               mensajes reales
             </span>
           </div>
@@ -134,24 +134,13 @@ export function AnimatedTestimonials({
               ))}
             </div>
             <p>“{active.content}”</p>
+            <span className={styles.anonymousLabel}>Cliente verificado</span>
           </div>
 
           <div className={styles.controls}>
             <button type="button" onClick={() => goTo(-1)} aria-label="Reseña anterior">
               <ChevronLeft size={18} aria-hidden />
             </button>
-            <div className={styles.dots}>
-              {testimonials.map((testimonial, index) => (
-                <button
-                  key={testimonial.id}
-                  type="button"
-                  className={index === activeIndex ? styles.activeDot : undefined}
-                  onClick={() => setActiveIndex(index)}
-                  aria-label={`Ver reseña ${index + 1}`}
-                  aria-current={index === activeIndex}
-                />
-              ))}
-            </div>
             <button type="button" onClick={() => goTo(1)} aria-label="Siguiente reseña">
               <ChevronRight size={18} aria-hidden />
             </button>
@@ -159,18 +148,17 @@ export function AnimatedTestimonials({
         </div>
       </div>
 
-      <div data-review-reveal className={styles.previewRail} aria-label="Vista rápida de reseñas">
-        {previewItems.map((testimonial, index) => (
-          <button
-            key={testimonial.id}
-            type="button"
-            className={index === activeIndex ? styles.activePreview : undefined}
-            onClick={() => setActiveIndex(index)}
-          >
-            <MessageCircle size={15} aria-hidden />
-            <span>{testimonial.content}</span>
-          </button>
-        ))}
+      <div data-review-reveal className={styles.marqueeStrip} aria-label="Reseñas de clientes">
+        <div className={styles.marqueeFadeLeft} />
+        <div className={styles.marqueeFadeRight} />
+        <div className={styles.marqueeTrack}>
+          {marqueeItems.map((testimonial, index) => (
+            <span key={`${testimonial.id}-${index}`} className={styles.marqueeTag}>
+              <Star size={11} aria-hidden />
+              {testimonial.content}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   )

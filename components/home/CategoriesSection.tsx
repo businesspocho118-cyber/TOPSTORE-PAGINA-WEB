@@ -115,7 +115,7 @@ export function CategoriesSection() {
       <div className="container-luxe relative z-10 py-24 sm:py-32">
         <div className="mb-12 max-w-3xl">
           <p data-categories-heading className="eyebrow">Categorías</p>
-          <h2 data-categories-heading className="section-title mt-3">Elegí tu línea</h2>
+          <h2 data-categories-heading className="section-title mt-3">Elige tu línea</h2>
         </div>
         <div className="grid gap-5 lg:grid-cols-3">
           {categories.map((category) => (

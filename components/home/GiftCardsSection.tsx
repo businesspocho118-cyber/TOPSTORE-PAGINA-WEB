@@ -9,6 +9,14 @@ import styles from './gift-cards.module.css'
 
 const giftCards = [
   {
+    id: '50000',
+    label: 'Tarjeta regalo',
+    amount: '$50.000 COP',
+    description: 'Un detalle especial para regalar prendas favoritas TOPSTORE.',
+    image: '/gift-cards/gift-card-50000.jpg',
+    message: 'Hola, quiero una tarjeta de regalo TOPSTORE por $50.000 COP.'
+  },
+  {
     id: '100000',
     label: 'Tarjeta regalo',
     amount: '$100.000 COP',
@@ -27,7 +35,7 @@ const giftCards = [
   {
     id: 'custom',
     label: 'Monto personalizado',
-    amount: 'Elegí el valor',
+    amount: 'Elige el valor',
     description: 'Acordamos por WhatsApp el monto perfecto para tu regalo.',
     image: '/gift-cards/gift-card-custom.png',
     message: 'Hola, quiero una tarjeta de regalo TOPSTORE con un monto personalizado.'
@@ -70,9 +78,9 @@ export function GiftCardsSection() {
             <Sparkles size={15} aria-hidden />
             Nuevo en TOPSTORE
           </p>
-          <h2 id="gift-cards-title" data-gift-title className={styles.title}>Regalá libertad para elegir</h2>
+          <h2 id="gift-cards-title" data-gift-title className={styles.title}>Regala libertad para elegir</h2>
           <p data-gift-copy className={styles.copy}>
-            Elegí una tarjeta de regalo y coordiná por WhatsApp. Todas son sin vencimiento.
+            Elige una tarjeta de regalo y coordina por WhatsApp. Todas son sin vencimiento.
           </p>
         </div>
 
@@ -85,7 +93,7 @@ export function GiftCardsSection() {
                   alt={`${giftCard.label} TOPSTORE: ${giftCard.amount}`}
                   width={1536}
                   height={1024}
-                  sizes="(min-width: 1024px) 31vw, (min-width: 640px) 48vw, 100vw"
+                  sizes="(min-width: 1280px) 23vw, (min-width: 700px) 48vw, 100vw"
                   className={styles.image}
                 />
               </div>

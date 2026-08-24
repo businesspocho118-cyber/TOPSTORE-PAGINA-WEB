@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 import { prefersReducedMotion, registerGsapPlugins } from '@/lib/gsap-client'
 import styles from './gift-cards.module.css'
 
-const SESSION_KEY = 'topstore-gift-card-announcement-v1'
+const SESSION_KEY = 'topstore-gift-card-announcement-v2'
 
 export function GiftCardAnnouncement() {
   const [isOpen, setIsOpen] = useState(false)
@@ -98,11 +98,12 @@ export function GiftCardAnnouncement() {
           <X size={20} aria-hidden />
         </button>
         <p className={styles.announcementKicker}>Nuevo en TOPSTORE</p>
-        <h2 id="gift-announcement-title" className={styles.announcementTitle}>Regalá o elegí</h2>
+        <h2 id="gift-announcement-title" className={styles.announcementTitle}>Regala o elige</h2>
         <p id="gift-announcement-copy" className={styles.announcementCopy}>
-          Regalá $100.000, $150.000 o elegí un monto personalizado. Todas son sin vencimiento.
+          Regala $50.000, $100.000, $150.000 o elige un monto personalizado. Todas son sin vencimiento.
         </p>
         <div className={styles.announcementOptions} aria-label="Opciones de tarjetas de regalo">
+          <span>$50.000</span>
           <span>$100.000</span>
           <span>$150.000</span>
           <span>Monto libre</span>

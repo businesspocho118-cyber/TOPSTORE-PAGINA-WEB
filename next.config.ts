@@ -25,6 +25,13 @@ const securityHeaders = [
   { key: 'Content-Security-Policy', value: csp }
 ]
 
+const publicAssetCacheHeaders = [
+  {
+    key: 'Cache-Control',
+    value: 'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400'
+  }
+]
+
 export default async function nextConfig(): Promise<NextConfig> {
   if (process.env.NODE_ENV === 'development') {
     await setupDevPlatform()
@@ -36,6 +43,23 @@ export default async function nextConfig(): Promise<NextConfig> {
     },
     async headers() {
       return [
+        {
+          source: '/_next/static/:path*',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'public, max-age=31536000, immutable'
+            }
+          ]
+        },
+        ...['/category-images/:path*', '/hero-images/:path*', '/product-color-images/:path*'].map((source) => ({
+          source,
+          headers: publicAssetCacheHeaders
+        })),
+        ...['/logo.png', '/logo-negro.jpeg', '/og-image.jpg'].map((source) => ({
+          source,
+          headers: publicAssetCacheHeaders
+        })),
         {
           source: '/(.*)',
           headers: securityHeaders

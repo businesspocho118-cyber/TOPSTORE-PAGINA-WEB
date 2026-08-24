@@ -1,4 +1,6 @@
-﻿import { createServerClient } from '@/lib/supabase/server'
+import { unstable_cache } from 'next/cache'
+import { PRODUCTS_CACHE_REVALIDATE_SECONDS, PRODUCTS_CACHE_TAG } from '@/lib/catalog-cache'
+import { createServerClient } from '@/lib/supabase/server'
 import { getTotalAvailableStock } from '@/lib/utils'
 import type { ProductGender, ProductRecord } from '@/types/database.types'
 
@@ -15,7 +17,7 @@ function gendersForFilter(genero?: ProductGender): ProductGender[] | null {
   return [genero]
 }
 
-export async function getProducts(filters: ProductFilters = {}): Promise<ProductRecord[]> {
+async function queryProducts(filters: ProductFilters = {}): Promise<ProductRecord[]> {
   const supabase = createServerClient()
   if (!supabase) {
     console.warn('[TOPSTORE] Supabase client is null — env not configured?')
@@ -52,7 +54,12 @@ export async function getProducts(filters: ProductFilters = {}): Promise<Product
   return products
 }
 
-export async function getProductIds(): Promise<Array<Pick<ProductRecord, 'product_id' | 'updated_at'>>> {
+const getCachedProducts = unstable_cache(queryProducts, ['topstore-products'], {
+  revalidate: PRODUCTS_CACHE_REVALIDATE_SECONDS,
+  tags: [PRODUCTS_CACHE_TAG]
+})
+
+async function queryProductIds(): Promise<Array<Pick<ProductRecord, 'product_id' | 'updated_at'>>> {
   const supabase = createServerClient()
   if (!supabase) return []
 
@@ -69,7 +76,12 @@ export async function getProductIds(): Promise<Array<Pick<ProductRecord, 'produc
   return data ?? []
 }
 
-export async function getProductByProductId(productId: string): Promise<ProductRecord | null> {
+const getCachedProductIds = unstable_cache(queryProductIds, ['topstore-product-ids'], {
+  revalidate: PRODUCTS_CACHE_REVALIDATE_SECONDS,
+  tags: [PRODUCTS_CACHE_TAG]
+})
+
+async function queryProductByProductId(productId: string): Promise<ProductRecord | null> {
   const supabase = createServerClient()
   if (!supabase) return null
 
@@ -86,4 +98,22 @@ export async function getProductByProductId(productId: string): Promise<ProductR
   }
 
   return data
+}
+
+
+const getCachedProductByProductId = unstable_cache(queryProductByProductId, ['topstore-product-by-id'], {
+  revalidate: PRODUCTS_CACHE_REVALIDATE_SECONDS,
+  tags: [PRODUCTS_CACHE_TAG]
+})
+
+export async function getProducts(filters: ProductFilters = {}): Promise<ProductRecord[]> {
+  return getCachedProducts(filters)
+}
+
+export async function getProductIds(): Promise<Array<Pick<ProductRecord, 'product_id' | 'updated_at'>>> {
+  return getCachedProductIds()
+}
+
+export async function getProductByProductId(productId: string): Promise<ProductRecord | null> {
+  return getCachedProductByProductId(productId)
 }

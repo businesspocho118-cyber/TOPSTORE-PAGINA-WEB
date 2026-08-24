@@ -13,6 +13,7 @@ const navItems = [
   { href: '/hombres', label: 'Hombres' },
   { href: '/mujeres', label: 'Mujeres' },
   { href: '/accesorios', label: 'Accesorios' },
+  { href: '/#tarjetas-regalo', label: 'Regalos' },
   { href: '/nosotros', label: 'Nosotros' }
 ]
 

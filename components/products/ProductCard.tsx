@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ShoppingBag } from 'lucide-react'
-import { MouseEvent, useRef } from 'react'
+import { MouseEvent, useRef, useState } from 'react'
 import { useCart } from '@/components/cart/CartProvider'
 import type { ProductRecord } from '@/types/database.types'
 import { getProductColorPreviewImages } from '@/lib/product-color-images'
@@ -12,6 +12,7 @@ import { prefersReducedMotion, registerGsapPlugins } from '@/lib/gsap-client'
 
 export function ProductCard({ product, priority = false }: { product: ProductRecord; priority?: boolean }) {
   const cardRef = useRef<HTMLElement>(null)
+  const [shouldLoadSecondaryImage, setShouldLoadSecondaryImage] = useState(false)
   const { addItem } = useCart()
   const localPreviewImages = getProductColorPreviewImages(product.product_id)
   const images = localPreviewImages.length > 0 ? localPreviewImages : getProductImages(product)
@@ -49,7 +50,11 @@ export function ProductCard({ product, priority = false }: { product: ProductRec
     <article
       ref={cardRef}
       className="product-card group overflow-hidden rounded-[2rem] border border-ink/10 bg-white shadow-[0_18px_55px_rgba(12,10,9,0.08)] transition"
-      onMouseEnter={() => animate(1.015)}
+      onMouseEnter={() => {
+        setShouldLoadSecondaryImage(true)
+        animate(1.015)
+      }}
+      onFocusCapture={() => setShouldLoadSecondaryImage(true)}
       onMouseLeave={() => animate(1)}
     >
       <Link href={`/producto/${product.product_id}`} className="block" aria-label={`Ver ${product.nombre}`}>
@@ -68,7 +73,7 @@ export function ProductCard({ product, priority = false }: { product: ProductRec
               <Image src="/logo.png" alt="TOPSTORE" width={240} height={240} className="h-32 w-32 object-contain opacity-70" />
             </div>
           )}
-          {secondaryImage && (
+          {secondaryImage && shouldLoadSecondaryImage && (
             <Image
               src={secondaryImage}
               alt={`${product.nombre} vista alternativa`}

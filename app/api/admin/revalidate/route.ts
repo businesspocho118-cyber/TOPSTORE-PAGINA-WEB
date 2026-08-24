@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { PRODUCTS_CACHE_TAG } from "@/lib/catalog-cache";
 
 export const runtime = "edge";
 
@@ -22,8 +23,9 @@ export async function POST(req: NextRequest) {
     for (const path of paths) {
       revalidatePath(path);
     }
+    revalidateTag(PRODUCTS_CACHE_TAG);
 
-    return NextResponse.json({ revalidated: true, paths });
+    return NextResponse.json({ revalidated: true, paths, tags: [PRODUCTS_CACHE_TAG] });
   } catch {
     return NextResponse.json(
       { error: "Error interno del servidor" },

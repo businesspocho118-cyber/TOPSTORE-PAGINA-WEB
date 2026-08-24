@@ -122,11 +122,7 @@ export function CategoriesSection() {
             <Link
               key={category.href}
               href={category.href}
-              prefetch
-              onClick={(event) => {
-                event.preventDefault()
-                window.location.assign(category.href)
-              }}
+              prefetch={false}
               className={`category-card ${styles.card} ${styles[category.tone as keyof typeof styles]} group relative overflow-hidden rounded-[2.25rem] border border-ink/10 bg-white shadow-luxe`}
             >
               <div className={styles.innerFrame}>

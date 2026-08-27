@@ -128,7 +128,9 @@ export function ProductDetailClient({ product }: { product: ProductRecord }) {
     () => getProductColorImageVariant(product.product_id, selectedColorLabel),
     [product.product_id, selectedColorLabel]
   )
-  const galleryImages = hasLocalColorImages ? selectedColorVariant?.images ?? [] : getImagesForColor(product, selectedColorLabel)
+  const localColorImages = selectedColorVariant?.images ?? []
+  const inventoryColorImages = getImagesForColor(product, selectedColorLabel)
+  const galleryImages = localColorImages.length > 0 ? localColorImages : inventoryColorImages
   const galleryKey = galleryImages.join('|')
   const [activeImage, setActiveImage] = useState(galleryImages[0] || '')
   const missingSelectedColorImage = hasLocalColorImages && colors.length > 0 && galleryImages.length === 0

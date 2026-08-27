@@ -25,6 +25,7 @@ const localSwatches: Record<string, string> = {
   grisclaro: '#D3D3D3',
   grisoscuro: '#5E5E5E',
   lila: '#a78bfa',
+  manzana: '#a10677',
   marron: '#7c4a2d',
   morado: '#7c3aed',
   multicolor: '#d4af37',
@@ -228,7 +229,9 @@ export function ProductDetailClient({ product }: { product: ProductRecord }) {
               <div className="mt-4 flex flex-wrap gap-3">
                 {(colors.length ? colors : [{ label: 'Única', value: 'Única', swatch: '#d6d3d1' }]).map((color) => {
                   const variant = hasLocalColorImages ? getProductColorImageVariant(product.product_id, color.label) : null
-                  const isMissing = hasLocalColorImages && !variant
+                  const hasLocalImage = (variant?.images.length ?? 0) > 0
+                  const hasInventoryImage = getImagesForColor(product, color.label).length > 0
+                  const isMissing = hasLocalColorImages && !hasLocalImage && !hasInventoryImage
                   return (
                     <button
                       key={color.value}

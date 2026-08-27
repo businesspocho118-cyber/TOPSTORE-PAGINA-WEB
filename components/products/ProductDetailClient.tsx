@@ -25,7 +25,7 @@ const localSwatches: Record<string, string> = {
   grisclaro: '#D3D3D3',
   grisoscuro: '#5E5E5E',
   lila: '#a78bfa',
-  manzana: '#a10677',
+  rojovioleta: '#a10677',
   marron: '#7c4a2d',
   morado: '#7c3aed',
   multicolor: '#d4af37',

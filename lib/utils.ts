@@ -43,6 +43,7 @@ const namedColors: Record<string, string> = {
   morado: '#7c3aed',
   uva: '#8B008B',
   lila: '#a78bfa',
+  manzana: '#a10677',
   vinotinto: '#7f1d1d',
   burdeos: '#7f1d1d',
   amarillo: '#facc15',

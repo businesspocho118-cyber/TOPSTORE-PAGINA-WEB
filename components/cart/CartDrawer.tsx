@@ -10,7 +10,7 @@ import { prefersReducedMotion, registerGsapPlugins } from '@/lib/gsap-client'
 
 export function CartDrawer() {
   const drawerRef = useRef<HTMLElement>(null)
-  const { items, isOpen, closeCart, removeItem, updateQuantity, clearCart } = useCart()
+  const { items, isOpen, closeCart, removeItem, updateQuantity } = useCart()
   const total = calculateCartTotal(items)
 
   useEffect(() => {
@@ -126,7 +126,7 @@ export function CartDrawer() {
             <span className="price-text text-4xl">{formatCOP(total)}</span>
           </div>
           <button type="button" className="btn-primary w-full" onClick={checkout} disabled={items.length === 0}>Finalizar por WhatsApp</button>
-          {items.length > 0 && <button type="button" className="mt-3 min-h-11 w-full text-xs font-bold uppercase tracking-[0.2em] text-muted transition hover:text-ink" onClick={clearCart}>Vaciar carrito</button>}
+          {items.length > 0 && <button type="button" className="mt-3 min-h-11 w-full text-xs font-bold uppercase tracking-[0.2em] text-muted transition hover:text-ink" onClick={closeCart}>Seguir comprando</button>}
         </div>
       </aside>
     </>

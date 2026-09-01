@@ -3,12 +3,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Minus, Plus, Trash2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { useCart } from '@/components/cart/CartProvider'
 import { buildWhatsAppCheckoutUrl, calculateCartTotal, getCartItemKey } from '@/lib/cart'
 import { formatCOP } from '@/lib/utils'
 
 export function CartPageContent() {
-  const { items, removeItem, updateQuantity, clearCart } = useCart()
+  const router = useRouter()
+  const { items, removeItem, updateQuantity } = useCart()
   const total = calculateCartTotal(items)
 
   function checkout() {
@@ -64,7 +66,7 @@ export function CartPageContent() {
               <span className="price-text text-4xl">{formatCOP(total)}</span>
             </div>
             <button type="button" className="btn-primary mt-6 w-full" onClick={checkout}>Finalizar por WhatsApp</button>
-            <button type="button" className="mt-3 min-h-11 w-full text-xs font-bold uppercase tracking-[0.2em] text-muted transition hover:text-ink" onClick={clearCart}>Vaciar carrito</button>
+            <button type="button" className="mt-3 min-h-11 w-full text-xs font-bold uppercase tracking-[0.2em] text-muted transition hover:text-ink" onClick={() => router.back()}>Seguir comprando</button>
           </aside>
         </div>
       )}

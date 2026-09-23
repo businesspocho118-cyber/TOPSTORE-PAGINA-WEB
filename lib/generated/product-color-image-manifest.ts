@@ -779,6 +779,16 @@ export const productColorImageManifest = {
     }
   },
   "short-push-up-corte-en-v": {
+    "azul": {
+      "productId": "short-push-up-corte-en-v",
+      "productFolder": "Short push up",
+      "colorLabel": "Azul",
+      "colorKey": "azul",
+      "images": [
+        "/product-color-images/short-push-up-corte-en-v/azul/01-short-push-up-azul-frontal.jpg",
+        "/product-color-images/short-push-up-corte-en-v/azul/02-short-push-up-azul-espalda.jpg"
+      ]
+    },
     "azulclaro": {
       "productId": "short-push-up-corte-en-v",
       "productFolder": "Short push up",

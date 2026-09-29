@@ -41,11 +41,21 @@ function lookupKeys(color: string) {
   return [...keys]
 }
 
+export const hiddenProductColorKeys: Record<string, Set<string>> = {
+  'camisa-compresora-mujer': new Set(['rojo']),
+  'chaqueta-mujer': new Set(['azuloscuro']),
+  'enterizo-abierto-espalda': new Set(['gris']),
+}
+
 export function getProductColorImageVariant(productId: string, color: string): ProductColorImageVariant | null {
+  const hidden = hiddenProductColorKeys[productId]
+  if (hidden?.has(normalizeColorImageKey(color))) return null
+
   const productVariants = productColorImageManifest[productId as keyof typeof productColorImageManifest]
   if (!productVariants) return null
 
   for (const key of lookupKeys(color)) {
+    if (hidden?.has(key)) continue
     const variant = productVariants[key as keyof typeof productVariants]
     if (variant) return variant
   }
@@ -57,7 +67,10 @@ export function getProductColorImageVariants(productId: string): ProductColorIma
   const productVariants = productColorImageManifest[productId as keyof typeof productColorImageManifest]
   if (!productVariants) return []
 
-  return Object.values(productVariants).sort((a, b) => a.colorLabel.localeCompare(b.colorLabel, 'es'))
+  const hidden = hiddenProductColorKeys[productId]
+  return Object.values(productVariants)
+    .filter((variant) => !hidden?.has(normalizeColorImageKey(variant.colorKey)))
+    .sort((a, b) => a.colorLabel.localeCompare(b.colorLabel, 'es'))
 }
 
 export function getProductColorPreviewImages(productId: string): string[] {

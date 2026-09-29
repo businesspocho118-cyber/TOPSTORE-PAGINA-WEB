@@ -633,16 +633,6 @@ export const productColorImageManifest = {
     }
   },
   "enterizo-abierto-espalda": {
-    "gris": {
-      "productId": "enterizo-abierto-espalda",
-      "productFolder": "Enterizos Abierto Espalda",
-      "colorLabel": "Gris",
-      "colorKey": "gris",
-      "images": [
-        "/product-color-images/enterizo-abierto-espalda/gris/02-enterizos-abierto-espalda-gris-frontal.jpeg",
-        "/product-color-images/enterizo-abierto-espalda/gris/01-enterizos-abierto-espalda-gris-espalda.jpeg"
-      ]
-    },
     "marron": {
       "productId": "enterizo-abierto-espalda",
       "productFolder": "Enterizos Abierto Espalda",
@@ -1414,12 +1404,6 @@ export const productColorImageReport = {
       "productId": "enterizo-corto",
       "folder": "MUJERES/Enterizo Corto/Vinotinto",
       "color": "Vinotinto",
-      "images": 2
-    },
-    {
-      "productId": "enterizo-abierto-espalda",
-      "folder": "MUJERES/Enterizos Abierto Espalda/Gris",
-      "color": "Gris",
       "images": 2
     },
     {

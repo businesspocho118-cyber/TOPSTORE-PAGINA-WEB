@@ -5,7 +5,7 @@ import { ImageOff, ShoppingBag } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useCart } from '@/components/cart/CartProvider'
 import type { ProductRecord } from '@/types/database.types'
-import { getProductColorImageVariant, getProductColorImageVariants, hasProductColorImageVariants } from '@/lib/product-color-images'
+import { getProductColorImageVariant, getProductColorImageVariants, hasProductColorImageVariants, hiddenProductColorKeys } from '@/lib/product-color-images'
 import { cleanColorLabel, cn, getCombinationStock, getFirstImage, getImagesForColor, getProductImages, parseColors, parseSizes, type ColorOption } from '@/lib/utils'
 import { prefersReducedMotion, registerGsapPlugins } from '@/lib/gsap-client'
 
@@ -51,10 +51,6 @@ function localColorKey(value: string) {
     .replace(/[^a-z0-9]+/g, '')
 }
 
-const hiddenProductColorKeys: Record<string, Set<string>> = {
-  'camisa-compresora-mujer': new Set(['rojo']),
-  'chaqueta-mujer': new Set(['azuloscuro']),
-}
 
 const productColorLabelOverrides: Record<string, Record<string, string>> = {
   'conjunto-con-top-halter': {

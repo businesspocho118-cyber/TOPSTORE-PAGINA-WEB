@@ -6,7 +6,7 @@ import { ShoppingBag } from 'lucide-react'
 import { MouseEvent, useRef, useState } from 'react'
 import { useCart } from '@/components/cart/CartProvider'
 import type { ProductRecord } from '@/types/database.types'
-import { getProductColorPreviewImages } from '@/lib/product-color-images'
+import { getProductColorPreviewImages, hiddenProductColorKeys } from '@/lib/product-color-images'
 import { cleanColorLabel, getFirstImage, getProductImages, getTotalAvailableStock, parseColors, parseSizes } from '@/lib/utils'
 import { prefersReducedMotion, registerGsapPlugins } from '@/lib/gsap-client'
 
@@ -18,7 +18,11 @@ export function ProductCard({ product, priority = false }: { product: ProductRec
   const images = localPreviewImages.length > 0 ? localPreviewImages : getProductImages(product)
   const primaryImage = images[0]
   const secondaryImage = images[1]
-  const colors = parseColors(product.colores)
+  const hiddenColors = hiddenProductColorKeys[product.product_id]
+  const rawColors = parseColors(product.colores)
+  const colors = hiddenColors
+    ? rawColors.filter((color) => !hiddenColors.has(cleanColorLabel(color.label).toLowerCase().replace(/[^a-z0-9]+/g, '')))
+    : rawColors
   const sizes = parseSizes(product.tallas)
   const availableStock = getTotalAvailableStock(product.unidades, product.stock)
   const outOfStock = availableStock <= 0

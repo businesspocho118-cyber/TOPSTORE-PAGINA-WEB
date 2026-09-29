@@ -72,6 +72,7 @@ function getVariant(manifest, productId, color) {
 const hiddenProductColorKeys = {
   'camisa-compresora-mujer': new Set(['rojo']),
   'chaqueta-mujer': new Set(['azuloscuro']),
+  'enterizo-abierto-espalda': new Set(['gris']),
 }
 
 const productColorLabelOverrides = {

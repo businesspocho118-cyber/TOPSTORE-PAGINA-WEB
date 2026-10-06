@@ -16,6 +16,7 @@ const categories = [
   { label: 'Chaquetas', keywords: ['chaqueta'], color: 'text-yellow-600', bar: 'bg-yellow-500' },
   { label: 'Tops', keywords: ['top'], color: 'text-rose-600', bar: 'bg-rose-500' },
   { label: 'Medias', keywords: ['media', 'medias'], color: 'text-indigo-600', bar: 'bg-indigo-500' },
+  { label: 'Cosmética', keywords: ['cosmetica', 'esponja', 'esponjas', 'cosmetiquera', 'cosmetiqueras', 'moña', 'mona', 'bolso', 'bolsos', 'cartera', 'carteras', 'neceser', 'cuero'], color: 'text-amber-700', bar: 'bg-amber-600' },
 ]
 
 const SIN_MANGA_KW = ['sin manga', 'tirante', 'i dont care', 'workout', 'alpha']

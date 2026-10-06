@@ -17,6 +17,7 @@ const mainNavItems = [
 const otherOptions = [
   { href: '/accesorios', label: 'Accesorios' },
   { href: '/cosmetica', label: 'Cosmética' },
+  { href: '/ofertas', label: 'Ofertas (Packs)' },
   { href: '/#tarjetas-regalo', label: 'Regalos' }
 ]
 
@@ -79,6 +80,7 @@ export function Header() {
   const isOtherActive =
     (pathname?.startsWith('/accesorios') ||
       pathname?.startsWith('/cosmetica') ||
+      pathname?.startsWith('/ofertas') ||
       pathname?.startsWith('/bolsos-y-belleza')) ?? false
   const activeOther = mounted && isOtherActive
 

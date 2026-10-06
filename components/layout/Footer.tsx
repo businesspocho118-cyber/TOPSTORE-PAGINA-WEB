@@ -60,6 +60,7 @@ export function Footer() {
             { href: '/mujeres', label: 'Mujeres' },
             { href: '/accesorios', label: 'Accesorios' },
             { href: '/cosmetica', label: 'Cosmética' },
+            { href: '/ofertas', label: 'Ofertas' },
             { href: '/nosotros', label: 'Nosotros' },
             { href: '/carrito', label: 'Carrito' }
           ].map(({ href, label }) => (

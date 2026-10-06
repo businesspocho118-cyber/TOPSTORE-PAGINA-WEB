@@ -3,18 +3,21 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { CartIcon } from '@/components/cart/CartIcon'
 import { cn } from '@/lib/utils'
 import { prefersReducedMotion, registerGsapPlugins } from '@/lib/gsap-client'
 
-const navItems = [
+const mainNavItems = [
   { href: '/hombres', label: 'Hombres' },
-  { href: '/mujeres', label: 'Mujeres' },
+  { href: '/mujeres', label: 'Mujeres' }
+]
+
+const otherOptions = [
   { href: '/accesorios', label: 'Accesorios' },
-  { href: '/#tarjetas-regalo', label: 'Regalos' },
-  { href: '/nosotros', label: 'Nosotros' }
+  { href: '/cosmetica', label: 'Cosmética' },
+  { href: '/#tarjetas-regalo', label: 'Regalos' }
 ]
 
 const socialIcons = [
@@ -59,16 +62,19 @@ const socialIcons = [
 export function Header() {
   const pathname = usePathname()
   const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [isMobileOtherOpen, setIsMobileOtherOpen] = useState(false)
 
-  const useWhiteLogo =
-    pathname.startsWith('/hombres') ||
-    pathname.startsWith('/mujeres') ||
-    pathname.startsWith('/accesorios') ||
-    pathname.startsWith('/nosotros')
-  const logoSrc = useWhiteLogo ? '/logo.png' : '/logo-negro.jpeg'
+  const logoSrc = '/logo.png?v=2'
   const isTransparentHome = pathname === '/' && !isScrolled
+  const isOtherActive =
+    pathname.startsWith('/accesorios') ||
+    pathname.startsWith('/cosmetica') ||
+    pathname.startsWith('/bolsos-y-belleza')
 
   useEffect(() => {
     const { ScrollTrigger } = registerGsapPlugins()
@@ -79,6 +85,18 @@ export function Header() {
     })
 
     return () => trigger.kill()
+  }, [])
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
   }, [])
 
   useEffect(() => {
@@ -101,6 +119,7 @@ export function Header() {
 
   useEffect(() => {
     setIsMenuOpen(false)
+    setIsDropdownOpen(false)
   }, [pathname])
 
   return (
@@ -118,7 +137,7 @@ export function Header() {
       <div className="container-luxe flex h-20 items-center justify-between">
         <div className="flex items-center gap-4">
           <Link href="/" aria-label="Ir al inicio de TOPSTORE" className="flex min-h-12 items-center gap-3">
-            <Image src={logoSrc} alt="TOPSTORE" width={180} height={180} className="h-14 w-14 object-contain" priority />
+            <Image src={logoSrc} alt="TOPSTORE" width={180} height={180} className="h-14 w-14 object-contain" priority unoptimized />
             <span
               className={cn(
                 'hidden font-display text-2xl tracking-[0.18em] transition-colors sm:inline',
@@ -150,8 +169,8 @@ export function Header() {
           </div>
         </div>
 
-        <nav aria-label="Navegación principal" className="hidden items-center gap-8 lg:flex">
-          {navItems.map((item) => (
+        <nav aria-label="Navegación principal" className="hidden items-center gap-7 lg:flex">
+          {mainNavItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -163,6 +182,82 @@ export function Header() {
               {item.label}
             </Link>
           ))}
+
+          {/* OTRAS OPCIONES dropdown */}
+          <div
+            ref={dropdownRef}
+            className="relative"
+            onMouseEnter={() => {
+              if (dropdownTimeoutRef.current) clearTimeout(dropdownTimeoutRef.current)
+              setIsDropdownOpen(true)
+            }}
+            onMouseLeave={() => {
+              dropdownTimeoutRef.current = setTimeout(() => {
+                setIsDropdownOpen(false)
+              }, 160)
+            }}
+          >
+            <button
+              type="button"
+              onClick={() => setIsDropdownOpen((prev) => !prev)}
+              aria-expanded={isDropdownOpen}
+              aria-haspopup="true"
+              className={cn(
+                'inline-flex min-h-11 items-center gap-1.5 rounded-full px-2 py-3 text-xs font-bold uppercase tracking-[0.22em] transition hover:text-gold-deep',
+                isOtherActive
+                  ? 'text-gold-deep'
+                  : isTransparentHome
+                    ? 'text-white/76 hover:text-white'
+                    : 'text-ink/78'
+              )}
+            >
+              <span>Otras Opciones</span>
+              <ChevronDown
+                className={cn('h-3.5 w-3.5 transition-transform duration-200', isDropdownOpen && 'rotate-180')}
+                aria-hidden
+              />
+            </button>
+
+            {isDropdownOpen && (
+              <div
+                role="menu"
+                className="absolute left-1/2 top-full z-50 mt-2 min-w-[220px] -translate-x-1/2 rounded-2xl border border-black/10 bg-white/95 p-2 shadow-[0_20px_50px_rgba(12,10,9,0.14)] backdrop-blur-xl animate-in fade-in-50 zoom-in-95 duration-150"
+              >
+                {otherOptions.map((sub) => {
+                  const isSubActive =
+                    sub.href.startsWith('/#')
+                      ? false
+                      : pathname.startsWith(sub.href)
+                  return (
+                    <Link
+                      key={sub.href}
+                      href={sub.href}
+                      role="menuitem"
+                      onClick={() => setIsDropdownOpen(false)}
+                      className={cn(
+                        'block rounded-xl px-4 py-2.5 text-xs font-bold uppercase tracking-[0.18em] transition',
+                        isSubActive
+                          ? 'bg-gold/15 text-gold-deep'
+                          : 'text-ink/80 hover:bg-black/5 hover:text-gold-deep'
+                      )}
+                    >
+                      {sub.label}
+                    </Link>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+
+          <Link
+            href="/nosotros"
+            className={cn(
+              'min-h-11 rounded-full px-2 py-3 text-xs font-bold uppercase tracking-[0.22em] transition hover:text-gold-deep',
+              pathname === '/nosotros' ? 'text-gold-deep' : isTransparentHome ? 'text-white/76 hover:text-white' : 'text-ink/78'
+            )}
+          >
+            Nosotros
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -185,15 +280,67 @@ export function Header() {
         aria-hidden={!isMenuOpen}
       >
         <nav aria-label="Navegación móvil" className="grid gap-2">
-          {navItems.map((item) => (
+          {mainNavItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
+              onClick={() => setIsMenuOpen(false)}
               className="flex min-h-14 items-center justify-between rounded-2xl border border-ink/8 px-5 font-display text-3xl uppercase tracking-wide text-ink transition hover:border-gold hover:text-gold-deep"
             >
               {item.label}
             </Link>
           ))}
+
+          {/* OTRAS OPCIONES mobile accordion */}
+          <div className="rounded-2xl border border-ink/8 bg-white/40 transition">
+            <button
+              type="button"
+              onClick={() => setIsMobileOtherOpen((prev) => !prev)}
+              className="flex min-h-14 w-full items-center justify-between px-5 font-display text-3xl uppercase tracking-wide text-ink transition hover:text-gold-deep"
+              aria-expanded={isMobileOtherOpen}
+            >
+              <span>Otras Opciones</span>
+              <ChevronDown
+                className={cn(
+                  'h-6 w-6 text-ink/60 transition-transform duration-300',
+                  isMobileOtherOpen && 'rotate-180 text-gold-deep'
+                )}
+              />
+            </button>
+            {isMobileOtherOpen && (
+              <div className="grid gap-1 border-t border-ink/8 px-3 py-2.5">
+                {otherOptions.map((sub) => {
+                  const isSubActive =
+                    sub.href.startsWith('/#')
+                      ? false
+                      : pathname.startsWith(sub.href)
+                  return (
+                    <Link
+                      key={sub.href}
+                      href={sub.href}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={cn(
+                        'flex min-h-11 items-center rounded-xl px-4 text-xs font-bold uppercase tracking-[0.2em] transition',
+                        isSubActive
+                          ? 'bg-gold/15 text-gold-deep'
+                          : 'text-ink/75 hover:bg-black/5 hover:text-gold-deep'
+                      )}
+                    >
+                      {sub.label}
+                    </Link>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+
+          <Link
+            href="/nosotros"
+            onClick={() => setIsMenuOpen(false)}
+            className="flex min-h-14 items-center justify-between rounded-2xl border border-ink/8 px-5 font-display text-3xl uppercase tracking-wide text-ink transition hover:border-gold hover:text-gold-deep"
+          >
+            Nosotros
+          </Link>
         </nav>
       </div>
     </header>

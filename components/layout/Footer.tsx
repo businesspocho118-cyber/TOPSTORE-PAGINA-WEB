@@ -49,14 +49,21 @@ export function Footer() {
     <footer className="border-t border-ink/10 bg-ink text-white">
       <div className="container-luxe grid gap-10 py-14 md:grid-cols-[1.2fr_1fr_1fr] md:py-20">
         <div>
-          <Image src="/logo-negro.jpeg" alt="TOPSTORE" width={180} height={180} className="h-20 w-20 rounded-2xl bg-white object-contain p-2" />
+          <Image src="/logo.png?v=2" alt="TOPSTORE" width={180} height={180} className="h-20 w-20 object-contain" unoptimized />
           <p className="mt-6 max-w-sm font-serif text-2xl leading-8 text-white/86">Envíos a toda Colombia 🇨🇴</p>
           <p className="mt-4 text-sm leading-7 text-white/58">Ropa deportiva premium, tienda 100% online desde Pasto, Nariño.</p>
         </div>
         <nav aria-label="Navegación de pie de página" className="grid gap-3">
           <p className="eyebrow text-champagne">Colección</p>
-          {['Hombres', 'Mujeres', 'Accesorios', 'Nosotros', 'Carrito'].map((label) => (
-            <Link key={label} href={`/${label.toLowerCase() === 'carrito' ? 'carrito' : label.toLowerCase() === 'nosotros' ? 'nosotros' : label.toLowerCase()}`} className="min-h-10 text-sm font-semibold uppercase tracking-[0.18em] text-white/70 transition hover:text-champagne">
+          {[
+            { href: '/hombres', label: 'Hombres' },
+            { href: '/mujeres', label: 'Mujeres' },
+            { href: '/accesorios', label: 'Accesorios' },
+            { href: '/cosmetica', label: 'Cosmética' },
+            { href: '/nosotros', label: 'Nosotros' },
+            { href: '/carrito', label: 'Carrito' }
+          ].map(({ href, label }) => (
+            <Link key={label} href={href} className="min-h-10 text-sm font-semibold uppercase tracking-[0.18em] text-white/70 transition hover:text-champagne">
               {label}
             </Link>
           ))}

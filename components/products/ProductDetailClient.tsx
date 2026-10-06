@@ -178,8 +178,11 @@ export function ProductDetailClient({ product }: { product: ProductRecord }) {
   return (
     <section ref={rootRef} className="container-luxe safe-top pb-24">
       <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
-        <div className="detail-media">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-ink/10 bg-surface-soft shadow-luxe">
+        <div className="detail-media w-full max-w-2xl mx-auto lg:max-w-none">
+          <div
+            className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-ink/10 bg-surface-soft shadow-luxe"
+            style={{ position: 'relative', width: '100%', aspectRatio: '4 / 5' }}
+          >
             {missingSelectedColorImage ? (
                 <MissingColorImage productName={product.nombre} color={selectedColorLabel} />
             ) : activeImage ? (

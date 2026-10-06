@@ -85,11 +85,14 @@ async function queryProductByProductId(productId: string): Promise<ProductRecord
   const supabase = createServerClient()
   if (!supabase) return null
 
+  const decoded = decodeURIComponent(productId).trim()
+  const slug = decoded.toLowerCase().replace(/\s+/g, '-')
+
   const { data, error } = await supabase
     .from('productos')
     .select('*')
     .eq('activo', true)
-    .eq('product_id', productId)
+    .or(`product_id.eq."${decoded}",product_id.eq."${slug}"`)
     .maybeSingle()
 
   if (error) {

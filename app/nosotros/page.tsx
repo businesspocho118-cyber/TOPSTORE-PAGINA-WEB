@@ -21,12 +21,13 @@ export default function NosotrosPage() {
         <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="glass-panel rounded-[2rem] p-10">
             <Image
-              src="/logo-negro.jpeg"
+              src="/logo.png?v=2"
               alt="Logo TOPSTORE"
               width={560}
               height={560}
               className="mx-auto h-auto w-full max-w-sm object-contain"
               priority
+              unoptimized
             />
           </div>
           <div>

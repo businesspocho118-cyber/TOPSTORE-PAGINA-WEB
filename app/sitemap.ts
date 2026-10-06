@@ -6,7 +6,7 @@ export const revalidate = 3600
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://topstore.co'
   const now = new Date()
-  const staticRoutes = ['', '/hombres', '/mujeres', '/accesorios', '/cosmetica', '/nosotros', '/carrito'].map((path) => ({
+  const staticRoutes = ['', '/hombres', '/mujeres', '/accesorios', '/cosmetica', '/ofertas', '/nosotros', '/carrito'].map((path) => ({
     url: `${baseUrl}${path}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,

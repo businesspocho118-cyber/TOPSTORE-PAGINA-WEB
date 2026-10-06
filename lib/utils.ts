@@ -59,7 +59,9 @@ const namedColors: Record<string, string> = {
   plateado: '#c0c0c0',
   packde3: '#e879a6',
   multicolor: '#d4af37',
-  surtidos: '#d4af37'
+  surtidos: '#d4af37',
+  variado: '#f43f5e',
+  variados: '#f43f5e'
 }
 
 function stripAccents(value: string) {

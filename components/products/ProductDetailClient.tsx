@@ -232,6 +232,9 @@ export function ProductDetailClient({ product }: { product: ProductRecord }) {
                   const hasLocalImage = (variant?.images.length ?? 0) > 0
                   const hasInventoryImage = getImagesForColor(product, color.label).length > 0
                   const isMissing = hasLocalColorImages && !hasLocalImage && !hasInventoryImage
+                  const isRainbow = ['variado', 'variados', 'multicolor', 'surtido', 'surtidos', 'arcoiris'].includes(
+                    localColorKey(color.label)
+                  )
                   return (
                     <button
                       key={color.value}
@@ -245,7 +248,14 @@ export function ProductDetailClient({ product }: { product: ProductRecord }) {
                       aria-pressed={selectedColor === color.value}
                       title={isMissing ? `Falta imagen para ${color.label}` : `Ver imagen ${color.label}`}
                     >
-                      <span className="h-5 w-5 rounded-full border border-ink/15" style={{ backgroundColor: color.swatch }} />
+                      <span
+                        className="h-5 w-5 rounded-full border border-ink/15 shrink-0"
+                        style={
+                          isRainbow
+                            ? { background: 'conic-gradient(from 180deg at 50% 50%, #ff2a2a 0deg, #ff7a00 50deg, #ffd000 100deg, #00c853 160deg, #00b0ff 220deg, #7c4dff 280deg, #ff4081 330deg, #ff2a2a 360deg)' }
+                            : { backgroundColor: color.swatch }
+                        }
+                      />
                       {color.label}
                       {isMissing && <span className="text-[0.62rem] uppercase tracking-[0.16em] text-muted">sin foto</span>}
                     </button>

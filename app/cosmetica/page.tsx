@@ -70,20 +70,6 @@ export default function CosmeticaPage() {
             Esponjas de maquillaje, cosmetiqueras acolchadas y moñas de satín para elevar tu rutina diaria.
           </p>
 
-          <div className="mt-6 flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center rounded-full bg-gold/15 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-gold-deep">
-              Cosmética TOPSTORE
-            </span>
-            <span className="inline-flex items-center rounded-full border border-ink/10 bg-white/70 px-3 py-1 text-xs font-medium text-ink/75 backdrop-blur">
-              💄 Esponjas: Rosado y Negro
-            </span>
-            <span className="inline-flex items-center rounded-full border border-ink/10 bg-white/70 px-3 py-1 text-xs font-medium text-ink/75 backdrop-blur">
-              👛 Cosmetiqueras: Rosado y Beige
-            </span>
-            <span className="inline-flex items-center rounded-full border border-ink/10 bg-white/70 px-3 py-1 text-xs font-medium text-ink/75 backdrop-blur">
-              🎀 Moñas: Gran variedad de tonos
-            </span>
-          </div>
         </div>
 
         <div className="mt-12">

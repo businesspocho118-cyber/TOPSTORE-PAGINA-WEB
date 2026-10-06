@@ -68,13 +68,19 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isMobileOtherOpen, setIsMobileOtherOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const logoSrc = '/logo.png?v=2'
   const isTransparentHome = pathname === '/' && !isScrolled
   const isOtherActive =
-    pathname.startsWith('/accesorios') ||
-    pathname.startsWith('/cosmetica') ||
-    pathname.startsWith('/bolsos-y-belleza')
+    (pathname?.startsWith('/accesorios') ||
+      pathname?.startsWith('/cosmetica') ||
+      pathname?.startsWith('/bolsos-y-belleza')) ?? false
+  const activeOther = mounted && isOtherActive
 
   useEffect(() => {
     const { ScrollTrigger } = registerGsapPlugins()
@@ -199,12 +205,13 @@ export function Header() {
           >
             <button
               type="button"
+              suppressHydrationWarning
               onClick={() => setIsDropdownOpen((prev) => !prev)}
               aria-expanded={isDropdownOpen}
               aria-haspopup="true"
               className={cn(
                 'inline-flex min-h-11 items-center gap-1.5 rounded-full px-2 py-3 text-xs font-bold uppercase tracking-[0.22em] transition hover:text-gold-deep',
-                isOtherActive
+                activeOther
                   ? 'text-gold-deep'
                   : isTransparentHome
                     ? 'text-white/76 hover:text-white'
@@ -295,6 +302,7 @@ export function Header() {
           <div className="rounded-2xl border border-ink/8 bg-white/40 transition">
             <button
               type="button"
+              suppressHydrationWarning
               onClick={() => setIsMobileOtherOpen((prev) => !prev)}
               className="flex min-h-14 w-full items-center justify-between px-5 font-display text-3xl uppercase tracking-wide text-ink transition hover:text-gold-deep"
               aria-expanded={isMobileOtherOpen}

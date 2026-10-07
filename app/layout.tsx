@@ -68,6 +68,14 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://topstore.co'
+  },
+  icons: {
+    icon: [
+      { url: '/logo.png', type: 'image/png' },
+      { url: '/favicon.ico' }
+    ],
+    shortcut: '/logo.png',
+    apple: '/logo.png'
   }
 }
 

@@ -273,3 +273,16 @@ export function getTotalAvailableStock(
 
   return total
 }
+
+export function isPackOrOferta(product?: {
+  nombre?: string | null
+  categoria?: string | null
+  product_id?: string | null
+  bajo_pedido?: boolean | null
+} | null): boolean {
+  if (!product) return false
+  if (product.bajo_pedido === true) return true
+  if (product.bajo_pedido === false) return false
+  const text = `${product.categoria || ''} ${product.nombre || ''} ${product.product_id || ''}`.toLowerCase()
+  return ['pack', 'combo', 'kit', 'set', 'oferta', '+', '2x1', '3x1'].some((kw) => text.includes(kw))
+}

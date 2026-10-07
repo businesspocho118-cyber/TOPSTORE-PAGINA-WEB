@@ -15,9 +15,9 @@ const mainNavItems = [
 ]
 
 const otherOptions = [
-  { href: '/accesorios', label: 'Accesorios' },
-  { href: '/cosmetica', label: 'Cosmética' },
   { href: '/ofertas', label: 'Ofertas (Packs)' },
+  { href: '/cosmetica', label: 'Cosmética' },
+  { href: '/accesorios', label: 'Accesorios' },
   { href: '/#tarjetas-regalo', label: 'Regalos' }
 ]
 

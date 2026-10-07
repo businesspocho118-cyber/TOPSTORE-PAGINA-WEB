@@ -13,21 +13,21 @@ const categories = [
     title: 'Hombres',
     copy: 'Fuerza, resistencia y líneas limpias.',
     tone: 'men',
-    image: '/category-images/hombres.png',
+    image: '/category-images/hombres-new.jpg',
   },
   {
     href: '/mujeres',
     title: 'Mujeres',
     copy: 'Ajuste, movimiento y presencia premium.',
     tone: 'women',
-    image: '/category-images/mujeres.png',
+    image: '/category-images/mujeres-new.jpg',
   },
   {
-    href: '/accesorios',
-    title: 'Accesorios',
-    copy: 'Detalles funcionales para cerrar tu rutina.',
+    href: '/ofertas',
+    title: 'Ofertas',
+    copy: 'Packs especiales y combos con ahorro exclusivo.',
     tone: 'accessories',
-    image: '/category-images/accesorios.png',
+    image: '/category-images/ofertas.jpg',
   },
 ]
 

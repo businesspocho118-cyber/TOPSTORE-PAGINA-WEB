@@ -1,10 +1,10 @@
-﻿import { ProductCard } from '@/components/products/ProductCard'
+import { ProductCard } from '@/components/products/ProductCard'
 import { ProductGridReveal } from '@/components/products/ProductGridReveal'
 import { getProducts, type ProductFilters } from '@/lib/products'
 
-export async function ProductGrid({ genero, categoria, limit, onlyInStock }: ProductFilters) {
-  const products = await getProducts({ genero, categoria, limit, onlyInStock })
-  const gridKey = ['products', genero ?? 'all', categoria ?? 'all', limit ?? 'full']
+export async function ProductGrid({ genero, categoria, limit, onlyInStock, excludeOfertas }: ProductFilters) {
+  const products = await getProducts({ genero, categoria, limit, onlyInStock, excludeOfertas })
+  const gridKey = ['products', genero ?? 'all', categoria ?? 'all', limit ?? 'full', excludeOfertas ? 'sin-ofertas' : 'con-ofertas']
     .join('-')
     .replace(/[^a-z0-9-]/gi, '-')
     .toLowerCase()

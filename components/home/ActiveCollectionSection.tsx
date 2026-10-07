@@ -11,6 +11,41 @@ const collectionPills = [
   { label: 'Looks para gimnasio y vida activa', icon: Dumbbell },
 ]
 
+const showcaseSections = [
+  {
+    id: 'vitrina-hombres',
+    eyebrow: 'Colección Masculina',
+    title: 'Hombres',
+    linkText: 'Ver todo Hombres',
+    linkHref: '/hombres',
+    gridProps: { genero: 'hombres' as const, limit: 8, onlyInStock: true },
+  },
+  {
+    id: 'vitrina-mujeres',
+    eyebrow: 'Colección Femenina',
+    title: 'Mujeres',
+    linkText: 'Ver todo Mujeres',
+    linkHref: '/mujeres',
+    gridProps: { genero: 'mujeres' as const, limit: 8, onlyInStock: true },
+  },
+  {
+    id: 'vitrina-ofertas',
+    eyebrow: 'Packs & Ahorro Especial',
+    title: 'Ofertas (Packs)',
+    linkText: 'Ver todas las Ofertas',
+    linkHref: '/ofertas',
+    gridProps: { categoria: 'Ofertas', limit: 8, onlyInStock: true },
+  },
+  {
+    id: 'vitrina-accesorios',
+    eyebrow: 'Detalles & Complementos',
+    title: 'Accesorios',
+    linkText: 'Ver todo Accesorios',
+    linkHref: '/accesorios',
+    gridProps: { genero: 'accesorios' as const, excludeOfertas: true, limit: 8, onlyInStock: true },
+  },
+]
+
 export function ActiveCollectionSection() {
   return (
     <section id="productos" data-active-collection className={styles.section} aria-labelledby="active-collection-title">
@@ -46,30 +81,35 @@ export function ActiveCollectionSection() {
           </div>
         </div>
 
-        <div data-active-panel className={styles.productPanel}>
-          <div className={styles.panelHeader}>
-            <div>
-              <p className={styles.panelEyebrow}>Vitrina TOPSTORE</p>
-              <h3 className={styles.panelTitle}>Piezas destacadas</h3>
-            </div>
+        <div className="space-y-12 sm:space-y-16">
+          {showcaseSections.map((section) => (
+            <div
+              key={section.id}
+              id={section.id}
+              data-active-panel
+              className={styles.productPanel}
+            >
+              <div className={styles.panelHeader}>
+                <div>
+                  <p className={styles.panelEyebrow}>{section.eyebrow}</p>
+                  <h3 className={styles.panelTitle}>{section.title}</h3>
+                </div>
 
-            <div className={styles.panelLinks} aria-label="Explorar categorías">
-              <Link href="/mujeres">
-                Mujeres
-                <ArrowRight size={15} aria-hidden />
-              </Link>
-              <Link href="/hombres">
-                Hombres
-                <ArrowRight size={15} aria-hidden />
-              </Link>
-            </div>
-          </div>
+                <div className={styles.panelLinks} aria-label={`Explorar ${section.title}`}>
+                  <Link href={section.linkHref}>
+                    {section.linkText}
+                    <ArrowRight size={15} aria-hidden />
+                  </Link>
+                </div>
+              </div>
 
-          <div className={styles.gridWrap}>
-            <Suspense fallback={<ProductGridSkeleton count={8} />}>
-              <ProductGrid limit={8} onlyInStock />
-            </Suspense>
-          </div>
+              <div className={styles.gridWrap}>
+                <Suspense fallback={<ProductGridSkeleton count={8} />}>
+                  <ProductGrid {...section.gridProps} />
+                </Suspense>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

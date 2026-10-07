@@ -9,6 +9,7 @@ export type ProductFilters = {
   categoria?: string
   limit?: number
   onlyInStock?: boolean
+  excludeOfertas?: boolean
 }
 
 function gendersForFilter(genero?: ProductGender): ProductGender[] | null {
@@ -32,8 +33,8 @@ async function queryProducts(filters: ProductFilters = {}): Promise<ProductRecor
 
   const generos = gendersForFilter(filters.genero)
   if (generos) query = query.in('genero', generos)
-  if (filters.categoria) query = query.eq('categoria', filters.categoria)
-  if (filters.limit && !filters.onlyInStock) query = query.limit(filters.limit)
+  if (filters.categoria) query = query.ilike('categoria', filters.categoria)
+  if (filters.limit && !filters.onlyInStock && !filters.excludeOfertas) query = query.limit(filters.limit)
 
   const { data, error } = await query
   if (error) {
@@ -42,6 +43,13 @@ async function queryProducts(filters: ProductFilters = {}): Promise<ProductRecor
   }
 
   let products = (data ?? []) as ProductRecord[]
+
+  if (filters.excludeOfertas) {
+    products = products.filter((product) => {
+      const text = `${product.categoria ?? ''} ${product.nombre} ${product.product_id}`.toLowerCase()
+      return !['pack', 'combo', 'kit', 'set', 'oferta', '+', '2x1', '3x1'].some((kw) => text.includes(kw))
+    })
+  }
 
   if (filters.onlyInStock) {
     products = products.filter((product) => getTotalAvailableStock(product.unidades, product.stock) > 0)

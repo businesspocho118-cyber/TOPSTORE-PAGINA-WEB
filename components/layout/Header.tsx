@@ -3,22 +3,33 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ChevronDown, Menu, X } from 'lucide-react'
+import { createPortal } from 'react-dom'
+import {
+  ChevronDown,
+  ChevronRight,
+  Gift,
+  Menu,
+  MessageCircle,
+  ShoppingBag,
+  Sparkles,
+  Tag,
+  X
+} from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { CartIcon } from '@/components/cart/CartIcon'
+import { useCart } from '@/components/cart/CartProvider'
 import { cn } from '@/lib/utils'
-import { prefersReducedMotion, registerGsapPlugins } from '@/lib/gsap-client'
 
 const mainNavItems = [
-  { href: '/hombres', label: 'Hombres' },
-  { href: '/mujeres', label: 'Mujeres' }
+  { href: '/hombres', label: 'Hombres', desc: 'Training, gym y rendimiento' },
+  { href: '/mujeres', label: 'Mujeres', desc: 'Prendas fit, activewear y confort' }
 ]
 
 const otherOptions = [
-  { href: '/ofertas', label: 'Ofertas (Packs)' },
-  { href: '/cosmetica', label: 'Cosmética' },
-  { href: '/accesorios', label: 'Accesorios' },
-  { href: '/#tarjetas-regalo', label: 'Regalos' }
+  { href: '/ofertas', label: 'Ofertas (Packs)', tag: 'Ahorro', icon: Tag },
+  { href: '/cosmetica', label: 'Cosmética', tag: 'Nuevo', icon: Sparkles },
+  { href: '/accesorios', label: 'Accesorios', tag: 'Detalles', icon: ShoppingBag },
+  { href: '/#tarjetas-regalo', label: 'Regalos', tag: 'Sin fecha', icon: Gift }
 ]
 
 const socialIcons = [
@@ -62,13 +73,12 @@ const socialIcons = [
 
 export function Header() {
   const pathname = usePathname()
-  const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const { count, openCart } = useCart()
   const dropdownRef = useRef<HTMLDivElement>(null)
   const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const [isMobileOtherOpen, setIsMobileOtherOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -85,14 +95,12 @@ export function Header() {
   const activeOther = mounted && isOtherActive
 
   useEffect(() => {
-    const { ScrollTrigger } = registerGsapPlugins()
-    const trigger = ScrollTrigger.create({
-      start: 72,
-      end: 99999,
-      onUpdate: (self) => setIsScrolled(self.scroll() > 72)
-    })
-
-    return () => trigger.kill()
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40)
+    }
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
@@ -108,19 +116,17 @@ export function Header() {
   }, [])
 
   useEffect(() => {
-    if (!mobileMenuRef.current) return
-    const { gsap } = registerGsapPlugins()
-    const reduced = prefersReducedMotion()
-
-    gsap.to(mobileMenuRef.current, {
-      xPercent: isMenuOpen ? 0 : 105,
-      autoAlpha: isMenuOpen ? 1 : 0,
-      duration: reduced ? 0 : 0.42,
-      ease: isMenuOpen ? 'power4.out' : 'power2.inOut'
-    })
-
-    document.body.style.overflow = isMenuOpen ? 'hidden' : ''
-    return () => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') setIsMenuOpen(false)
+      }
+      window.addEventListener('keydown', handleKeyDown)
+      return () => {
+        document.body.style.overflow = ''
+        window.removeEventListener('keydown', handleKeyDown)
+      }
+    } else {
       document.body.style.overflow = ''
     }
   }, [isMenuOpen])
@@ -135,7 +141,7 @@ export function Header() {
       className={cn(
         'fixed inset-x-0 top-0 z-50 transition-all duration-300',
         isScrolled || pathname !== '/'
-          ? 'border-b border-black/10 bg-white/82 shadow-[0_10px_40px_rgba(12,10,9,0.08)] backdrop-blur-xl'
+          ? 'border-b border-black/10 bg-white/85 shadow-[0_10px_40px_rgba(12,10,9,0.08)] backdrop-blur-xl'
           : 'bg-transparent'
       )}
     >
@@ -191,7 +197,7 @@ export function Header() {
             </Link>
           ))}
 
-          {/* OTRAS OPCIONES dropdown */}
+          {/* OTRAS OPCIONES dropdown (Desktop) */}
           <div
             ref={dropdownRef}
             className="relative"
@@ -269,90 +275,270 @@ export function Header() {
           </Link>
         </nav>
 
+        {/* Header Right (Cart + Hamburger Button) */}
         <div className="flex items-center gap-2">
           <CartIcon />
           <button
             type="button"
-            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-ink/10 bg-white/70 text-ink backdrop-blur lg:hidden"
-            aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            className={cn(
+              'inline-flex h-12 w-12 items-center justify-center rounded-full border transition-all duration-200 lg:hidden',
+              isTransparentHome
+                ? 'border-white/20 bg-black/40 text-white backdrop-blur-md hover:bg-black/60 active:scale-95'
+                : 'border-ink/10 bg-white/80 text-ink backdrop-blur-md hover:bg-white active:scale-95'
+            )}
+            aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú de navegación'}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((value) => !value)}
           >
-            {isMenuOpen ? <X aria-hidden size={20} /> : <Menu aria-hidden size={20} />}
+            {isMenuOpen ? <X aria-hidden size={22} /> : <Menu aria-hidden size={22} />}
           </button>
         </div>
       </div>
 
-      <div
-        ref={mobileMenuRef}
-        className="fixed right-4 top-24 z-[55] w-[calc(100vw-2rem)] max-w-sm translate-x-[105%] rounded-[2rem] border border-white/70 bg-white/92 p-5 opacity-0 shadow-luxe backdrop-blur-2xl lg:hidden"
-        aria-hidden={!isMenuOpen}
-      >
-        <nav aria-label="Navegación móvil" className="grid gap-2">
-          {mainNavItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setIsMenuOpen(false)}
-              className="flex min-h-14 items-center justify-between rounded-2xl border border-ink/8 px-5 font-display text-3xl uppercase tracking-wide text-ink transition hover:border-gold hover:text-gold-deep"
-            >
-              {item.label}
-            </Link>
-          ))}
-
-          {/* OTRAS OPCIONES mobile accordion */}
-          <div className="rounded-2xl border border-ink/8 bg-white/40 transition">
-            <button
-              type="button"
-              suppressHydrationWarning
-              onClick={() => setIsMobileOtherOpen((prev) => !prev)}
-              className="flex min-h-14 w-full items-center justify-between px-5 font-display text-3xl uppercase tracking-wide text-ink transition hover:text-gold-deep"
-              aria-expanded={isMobileOtherOpen}
-            >
-              <span>Otras Opciones</span>
-              <ChevronDown
-                className={cn(
-                  'h-6 w-6 text-ink/60 transition-transform duration-300',
-                  isMobileOtherOpen && 'rotate-180 text-gold-deep'
-                )}
-              />
-            </button>
-            {isMobileOtherOpen && (
-              <div className="grid gap-1 border-t border-ink/8 px-3 py-2.5">
-                {otherOptions.map((sub) => {
-                  const isSubActive =
-                    sub.href.startsWith('/#')
-                      ? false
-                      : pathname.startsWith(sub.href)
-                  return (
-                    <Link
-                      key={sub.href}
-                      href={sub.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={cn(
-                        'flex min-h-11 items-center rounded-xl px-4 text-xs font-bold uppercase tracking-[0.2em] transition',
-                        isSubActive
-                          ? 'bg-gold/15 text-gold-deep'
-                          : 'text-ink/75 hover:bg-black/5 hover:text-gold-deep'
-                      )}
-                    >
-                      {sub.label}
-                    </Link>
-                  )
-                })}
-              </div>
+      {/* Mobile Drawer Navigation (via Portal to document.body) */}
+      {mounted &&
+        createPortal(
+          <div
+            className={cn(
+              'fixed inset-0 z-[100] transition-visibility duration-300 lg:hidden',
+              isMenuOpen ? 'pointer-events-auto visible' : 'pointer-events-none invisible'
             )}
-          </div>
-
-          <Link
-            href="/nosotros"
-            onClick={() => setIsMenuOpen(false)}
-            className="flex min-h-14 items-center justify-between rounded-2xl border border-ink/8 px-5 font-display text-3xl uppercase tracking-wide text-ink transition hover:border-gold hover:text-gold-deep"
+            aria-hidden={!isMenuOpen}
           >
-            Nosotros
-          </Link>
-        </nav>
-      </div>
+            {/* Backdrop Overlay */}
+            <div
+              className={cn(
+                'fixed inset-0 bg-black/75 backdrop-blur-md transition-opacity duration-300',
+                isMenuOpen ? 'opacity-100' : 'opacity-0'
+              )}
+              onClick={() => setIsMenuOpen(false)}
+            />
+
+            {/* Slide-over Drawer Panel */}
+            <aside
+              role="dialog"
+              aria-modal="true"
+              aria-label="Menú principal de navegación"
+              className={cn(
+                'fixed inset-y-0 right-0 flex h-full w-[86vw] max-w-[380px] flex-col border-l border-[#e9c56e]/20 bg-gradient-to-b from-[#14110f] via-[#0d0b09] to-[#070605] text-[#fffaf0] shadow-[-20px_0_60px_rgba(0,0,0,0.85)] transition-transform duration-300 ease-out',
+                isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+              )}
+            >
+              {/* Drawer Top Header */}
+              <div className="flex h-20 items-center justify-between border-b border-white/10 px-6">
+                <Link
+                  href="/"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center gap-3"
+                  aria-label="Ir al inicio"
+                >
+                  <Image
+                    src={logoSrc}
+                    alt="TOPSTORE"
+                    width={160}
+                    height={160}
+                    className="h-11 w-11 object-contain"
+                    priority
+                    unoptimized
+                  />
+                  <span className="font-display text-2xl tracking-[0.18em] text-[#fffaf0]">
+                    TOPSTORE
+                  </span>
+                </Link>
+
+                <button
+                  type="button"
+                  onClick={() => setIsMenuOpen(false)}
+                  aria-label="Cerrar menú"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/80 backdrop-blur transition hover:border-[#e9c56e] hover:bg-white/15 hover:text-white active:scale-95"
+                >
+                  <X size={20} aria-hidden />
+                </button>
+              </div>
+
+              {/* Drawer Scrollable Body */}
+              <div className="flex-1 overflow-y-auto px-5 py-5 space-y-6 overscroll-contain">
+                {/* Tu Carrito (Acceso Rápido) */}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMenuOpen(false)
+                    openCart()
+                  }}
+                  className="flex w-full items-center justify-between rounded-2xl border border-[#e9c56e]/30 bg-gradient-to-r from-[#1f1a14] to-[#14100c] p-3.5 transition hover:border-[#e9c56e] active:scale-[0.99]"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#e9c56e]/15 text-[#e9c56e]">
+                      <ShoppingBag size={18} />
+                    </div>
+                    <div className="text-left">
+                      <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#e9c56e]">
+                        Tu Carrito
+                      </p>
+                      <p className="text-xs font-semibold text-white/80">
+                        {count === 0 ? 'Sin prendas aún' : `${count} ${count === 1 ? 'prenda' : 'prendas'} en el carrito`}
+                      </p>
+                    </div>
+                  </div>
+                  <span className="rounded-full bg-[#e9c56e] px-3 py-1 text-[0.68rem] font-black uppercase tracking-wider text-[#120e08]">
+                    Ver
+                  </span>
+                </button>
+
+                {/* Main Navigation (Hombres / Mujeres) */}
+                <div className="space-y-2">
+                  <p className="text-[0.68rem] font-black uppercase tracking-[0.22em] text-[#e9c56e]/80 px-1">
+                    Líneas Principales
+                  </p>
+                  <div className="grid gap-2">
+                    {mainNavItems.map((item) => {
+                      const isActive = pathname === item.href
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={cn(
+                            'group flex items-center justify-between rounded-2xl border p-4 transition active:scale-[0.99]',
+                            isActive
+                              ? 'border-[#e9c56e] bg-[#e9c56e]/12 text-[#e9c56e]'
+                              : 'border-white/10 bg-white/[0.03] text-white hover:border-[#e9c56e]/50 hover:bg-white/[0.06]'
+                          )}
+                        >
+                          <div>
+                            <span className="font-display text-2xl uppercase tracking-wider block">
+                              {item.label}
+                            </span>
+                            <span className="text-[0.72rem] text-white/60 block mt-0.5">
+                              {item.desc}
+                            </span>
+                          </div>
+                          <ChevronRight
+                            size={20}
+                            className={cn(
+                              'transition-transform group-hover:translate-x-1',
+                              isActive ? 'text-[#e9c56e]' : 'text-white/40'
+                            )}
+                          />
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </div>
+
+                {/* Categorías & Ofertas */}
+                <div className="space-y-2">
+                  <p className="text-[0.68rem] font-black uppercase tracking-[0.22em] text-[#e9c56e]/80 px-1">
+                    Catálogo & Especiales
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {otherOptions.map((item) => {
+                      const Icon = item.icon
+                      const isActive = item.href.startsWith('/#') ? false : pathname.startsWith(item.href)
+                      return (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={cn(
+                            'group flex flex-col justify-between rounded-2xl border p-3.5 transition active:scale-[0.98]',
+                            isActive
+                              ? 'border-[#e9c56e] bg-[#e9c56e]/15 text-[#e9c56e]'
+                              : 'border-white/10 bg-white/[0.03] text-white hover:border-[#e9c56e]/40 hover:bg-white/[0.06]'
+                          )}
+                        >
+                          <div className="flex items-center justify-between">
+                            <Icon size={16} className={isActive ? 'text-[#e9c56e]' : 'text-white/60'} />
+                            <span className="rounded-full border border-[#e9c56e]/40 bg-[#e9c56e]/10 px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-wider text-[#e9c56e]">
+                              {item.tag}
+                            </span>
+                          </div>
+                          <span className="mt-3 text-xs font-bold uppercase tracking-[0.12em] block">
+                            {item.label}
+                          </span>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                </div>
+
+                {/* Nosotros */}
+                <div>
+                  <Link
+                    href="/nosotros"
+                    onClick={() => setIsMenuOpen(false)}
+                    className={cn(
+                      'flex items-center justify-between rounded-2xl border p-4 transition active:scale-[0.99]',
+                      pathname === '/nosotros'
+                        ? 'border-[#e9c56e] bg-[#e9c56e]/12 text-[#e9c56e]'
+                        : 'border-white/10 bg-white/[0.03] text-white hover:border-[#e9c56e]/50 hover:bg-white/[0.06]'
+                    )}
+                  >
+                    <div>
+                      <span className="font-display text-xl uppercase tracking-wider block">
+                        Nosotros
+                      </span>
+                      <span className="text-[0.72rem] text-white/60 block mt-0.5">
+                        Conoce nuestra historia, misión y calidad
+                      </span>
+                    </div>
+                    <ChevronRight size={18} className="text-white/40" />
+                  </Link>
+                </div>
+
+                {/* Asesoría WhatsApp Directa */}
+                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-4 text-center">
+                  <p className="text-[0.68rem] font-bold uppercase tracking-[0.16em] text-[#e9c56e]">
+                    ¿Tienes dudas o necesitas ayuda?
+                  </p>
+                  <p className="mt-1 text-xs text-white/70">
+                    Te asesoramos con tallas, combos o compras personalizadas.
+                  </p>
+                  <Link
+                    href="https://wa.me/573205172484?text=Hola,%20necesito%20asesor%C3%ADa%20con%20una%20prenda%20de%20TOPSTORE"
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#25D366]/40 bg-[#25D366]/15 py-2.5 text-xs font-black uppercase tracking-wider text-[#25D366] transition hover:bg-[#25D366] hover:text-[#0b2812]"
+                  >
+                    <MessageCircle size={16} />
+                    <span>Hablar con un asesor</span>
+                  </Link>
+                </div>
+
+                {/* Redes Sociales */}
+                <div className="pt-1">
+                  <p className="text-center text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white/40 mb-3">
+                    Síguenos en nuestras redes
+                  </p>
+                  <div className="flex items-center justify-center gap-3">
+                    {socialIcons.map(({ href, label, icon }) => (
+                      <Link
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={label}
+                        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition hover:border-[#e9c56e] hover:bg-white/15 hover:text-white"
+                      >
+                        {icon}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Drawer Footer info */}
+              <div className="border-t border-white/10 px-6 py-3.5 text-center bg-black/30">
+                <p className="text-[0.65rem] uppercase tracking-widest text-white/40">
+                  TOPSTORE · Envíos a toda Colombia
+                </p>
+              </div>
+            </aside>
+          </div>,
+          document.body
+        )}
     </header>
   )
 }
+

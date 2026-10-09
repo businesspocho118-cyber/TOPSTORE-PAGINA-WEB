@@ -138,13 +138,7 @@ export function ProductDetailClient({ product }: { product: ProductRecord }) {
     [product.unidades, selectedColor, selectedSize, product.stock]
   )
   const isOferta = useMemo(() => {
-    if (product.categoria?.toLowerCase() === 'ofertas' || product.categoria?.toLowerCase() === 'oferta') return true
-    if (isPackOrOferta(product)) return true
-    const text = `${product.categoria ?? ''} ${product.nombre ?? ''} ${product.descripcion ?? ''} ${product.product_id ?? ''}`
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-    return ['oferta', 'ofertas', 'pack', 'packs', 'combo', 'combos', 'kit', 'kits'].some((kw) => text.includes(kw))
+    return product.product_id === 'pack-5-esponjas-variadas'
   }, [product])
   const isMonaSatin =
     product.product_id === 'mona-satin-cabello' ||

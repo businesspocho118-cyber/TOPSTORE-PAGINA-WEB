@@ -7,7 +7,7 @@ import { getProducts } from '@/lib/products'
 
 export const metadata: Metadata = {
   title: 'Ofertas (Packs) | TOPSTORE',
-  description: 'Aprovecha nuestras ofertas y packs especiales en cosmética, accesorios y moda en TOPSTORE. Envíos a toda Colombia.'
+  description: 'Aprovecha nuestras ofertas y packs especiales en bolsos, accesorios y moda en TOPSTORE. Envíos a toda Colombia.'
 }
 
 export const runtime = 'edge'
@@ -61,7 +61,7 @@ export default function OfertasPage() {
           <p className="eyebrow">Ahorro Exclusivo</p>
           <h1 className="section-title mt-3">Ofertas (Packs)</h1>
           <p className="mt-4 max-w-2xl text-base leading-8 text-muted">
-            Lleva más pagando menos. Packs y combos especiales de accesorios y cosmética pensados para ti.
+            Lleva más pagando menos. Packs y combos especiales de accesorios y bolsos pensados para ti.
           </p>
         </div>
 

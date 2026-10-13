@@ -117,7 +117,7 @@ export function NewCatalogAnnouncement() {
         <div className="relative h-40 sm:h-44 w-full overflow-hidden bg-[#0c0a08]">
           <Image
             src="/promo-banner.jpg"
-            alt="Nuevas ofertas y cosmética en TOPSTORE"
+            alt="Nuevas ofertas y bolsos en TOPSTORE"
             fill
             sizes="390px"
             priority
@@ -152,7 +152,7 @@ export function NewCatalogAnnouncement() {
             id="promo-announcement-desc"
             className="mt-2 text-xs leading-relaxed text-white/75"
           >
-            Agrandamos nuestro catálogo con nueva línea de <strong>Cosmética</strong> y <strong>nuevos packs en oferta</strong>.
+            Agrandamos nuestro catálogo con nueva línea de <strong>Bolsos</strong> y <strong>nuevos packs en oferta</strong>.
           </p>
 
           {/* Compact Action Buttons */}
@@ -167,11 +167,11 @@ export function NewCatalogAnnouncement() {
             </Link>
 
             <Link
-              href="/cosmetica"
+              href="/bolsos"
               onClick={closeAnnouncement}
               className="inline-flex min-h-[2.75rem] flex-1 items-center justify-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-3 text-[0.72rem] font-black uppercase tracking-wider text-[#fffaf0] transition hover:bg-white/20 active:scale-95"
             >
-              <span>Ver Cosmética</span>
+              <span>Ver Bolsos</span>
               <ArrowRight size={13} aria-hidden />
             </Link>
           </div>

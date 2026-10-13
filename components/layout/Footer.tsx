@@ -59,7 +59,7 @@ export function Footer() {
             { href: '/hombres', label: 'Hombres' },
             { href: '/mujeres', label: 'Mujeres' },
             { href: '/accesorios', label: 'Accesorios' },
-            { href: '/cosmetica', label: 'Cosmética' },
+            { href: '/bolsos', label: 'Bolsos' },
             { href: '/ofertas', label: 'Ofertas' },
             { href: '/nosotros', label: 'Nosotros' },
             { href: '/carrito', label: 'Carrito' }

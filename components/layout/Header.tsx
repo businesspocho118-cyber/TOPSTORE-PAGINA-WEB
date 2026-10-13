@@ -27,8 +27,8 @@ const mainNavItems = [
 
 const otherOptions = [
   { href: '/ofertas', label: 'Ofertas (Packs)', tag: 'Ahorro', icon: Tag },
-  { href: '/cosmetica', label: 'Cosmética', tag: 'Nuevo', icon: Sparkles },
-  { href: '/accesorios', label: 'Accesorios', tag: 'Detalles', icon: ShoppingBag },
+  { href: '/bolsos', label: 'Bolsos', tag: 'Nuevo', icon: ShoppingBag },
+  { href: '/accesorios', label: 'Accesorios', tag: 'Detalles', icon: Sparkles },
   { href: '/#tarjetas-regalo', label: 'Regalos', tag: 'Sin fecha', icon: Gift }
 ]
 
@@ -90,6 +90,7 @@ export function Header() {
   const isOtherActive =
     (pathname?.startsWith('/accesorios') ||
       pathname?.startsWith('/cosmetica') ||
+      pathname?.startsWith('/bolsos') ||
       pathname?.startsWith('/ofertas') ||
       pathname?.startsWith('/bolsos-y-belleza')) ?? false
   const activeOther = mounted && isOtherActive

@@ -274,25 +274,4 @@ export function getTotalAvailableStock(
   return total
 }
 
-const BINARY_STOCK_IDS = new Set([
-  'pack-5-esponjas-variadas',
-  'combo-cosmetiquera-2-monas-3-esponjas',
-  'pack-6-esponjas-2-monas-satin',
-  'pack-3-monas-satin',
-  'pack-3-esponjas-variadas',
-  'mona-satin-cabello',
-])
 
-export function isPackOrOferta(product?: {
-  nombre?: string | null
-  categoria?: string | null
-  product_id?: string | null
-  bajo_pedido?: boolean | null
-} | null): boolean {
-  if (!product) return false
-  const id = product.product_id?.toLowerCase() || ''
-  if (BINARY_STOCK_IDS.has(id)) return true
-  if (product.categoria?.toLowerCase() === 'ofertas') return true
-  if (product.bajo_pedido === true) return true
-  return false
-}

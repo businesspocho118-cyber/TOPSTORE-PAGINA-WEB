@@ -27,14 +27,15 @@ export default function AboutSection1() {
       gsap.from('.about-reveal', {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 68%',
+          start: 'top 85%',
           once: true,
         },
         y: 44,
         stagger: 0.13,
         duration: 0.85,
         ease: 'power3.out',
-        clearProps: 'transform',
+        immediateRender: false,
+        clearProps: 'transform,opacity',
       })
 
       gsap.to('.about-raycast', {
@@ -54,7 +55,7 @@ export default function AboutSection1() {
   }, [])
 
   return (
-    <section id="asesoria" ref={sectionRef} className="relative min-h-screen scroll-mt-20 overflow-hidden bg-ink px-4 py-32 text-white">
+    <section id="asesoria" ref={sectionRef} className="relative flex min-h-[78vh] scroll-mt-20 items-center overflow-hidden bg-ink px-4 py-24 text-white sm:py-32">
       <div className="about-raycast absolute inset-0 opacity-35 mix-blend-screen">
         <RaycastAnimatedBackground />
       </div>

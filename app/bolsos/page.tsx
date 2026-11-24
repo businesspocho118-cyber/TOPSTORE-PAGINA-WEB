@@ -34,11 +34,6 @@ function normalize(val: string) {
   return val.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
 }
 
-function isPackOrOferta(product: { nombre: string; categoria?: string | null; product_id?: string }) {
-  const text = normalize(`${product.categoria ?? ''} ${product.nombre} ${product.product_id ?? ''}`)
-  return ['pack', 'combo', 'kit', 'set', 'oferta', '+', '2x1', '3x1'].some((kw) => text.includes(kw))
-}
-
 async function BolsosGrid() {
   const [bolsos, accesorios, allProducts] = await Promise.all([
     getProducts({ categoria: 'Bolsos' }),
@@ -48,7 +43,6 @@ async function BolsosGrid() {
 
   const all = [...bolsos, ...accesorios, ...allProducts]
   const matched = all.filter((product) => {
-    if (isPackOrOferta(product)) return false
     if (product.categoria?.toLowerCase() === 'bolsos' || product.categoria?.toLowerCase() === 'bolso') return true
     const text = normalize(`${product.categoria ?? ''} ${product.nombre} ${product.descripcion ?? ''}`)
     return BOLSOS_KEYWORDS.some((kw) => text.includes(kw))

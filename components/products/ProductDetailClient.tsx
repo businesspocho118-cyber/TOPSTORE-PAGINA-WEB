@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { useCart } from '@/components/cart/CartProvider'
 import type { ProductRecord } from '@/types/database.types'
 import { getProductColorImageVariant, getProductColorImageVariants, hasProductColorImageVariants, hiddenProductColorKeys } from '@/lib/product-color-images'
-import { cleanColorLabel, cn, getCombinationStock, getFirstImage, getImagesForColor, getProductImages, parseColors, parseSizes, isPackOrOferta, type ColorOption } from '@/lib/utils'
+import { cleanColorLabel, cn, getCombinationStock, getFirstImage, getImagesForColor, getProductImages, parseColors, parseSizes, type ColorOption } from '@/lib/utils'
 import { prefersReducedMotion, registerGsapPlugins } from '@/lib/gsap-client'
 
 const localSwatches: Record<string, string> = {
@@ -137,19 +137,11 @@ export function ProductDetailClient({ product }: { product: ProductRecord }) {
     () => getCombinationStock(product.unidades, selectedColor, selectedSize, product.stock),
     [product.unidades, selectedColor, selectedSize, product.stock]
   )
-  const isOferta = useMemo(() => {
-    if (product.categoria?.toLowerCase() === 'ofertas' || product.categoria?.toLowerCase() === 'oferta') return true
-    if (isPackOrOferta(product)) return true
-    const text = `${product.categoria ?? ''} ${product.nombre ?? ''} ${product.descripcion ?? ''} ${product.product_id ?? ''}`
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-    return ['oferta', 'ofertas', 'pack', 'packs', 'combo', 'combos', 'kit', 'kits'].some((kw) => text.includes(kw))
-  }, [product])
   const isMonaSatin =
     product.product_id === 'mona-satin-cabello' ||
     product.product_id?.toLowerCase().includes('mona-satin-cabello')
-  const hideStockUnits = isOferta || isMonaSatin
+  const hideStockUnits =
+    isMonaSatin || (product as ProductRecord & { bajo_pedido?: boolean | null }).bajo_pedido === true
   const disabled = combinationStock <= 0
 
   useEffect(() => {

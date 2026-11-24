@@ -56,7 +56,7 @@ export default async function nextConfig(): Promise<NextConfig> {
           source,
           headers: publicAssetCacheHeaders
         })),
-        ...['/logo.png', '/logo-negro.jpeg', '/og-image.jpg'].map((source) => ({
+        ...['/logo.png', '/logo-negro.jpeg', '/og-image.jpg', '/topstore-woman-logo.jpg', '/topstore-woman-banner.jpg'].map((source) => ({
           source,
           headers: publicAssetCacheHeaders
         })),

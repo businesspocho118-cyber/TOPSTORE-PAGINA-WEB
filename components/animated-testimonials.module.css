@@ -2,7 +2,8 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: clamp(5.5rem, 9vw, 8rem) 0 clamp(0.5rem, 2vw, 1rem);
+  scroll-margin-top: var(--header-height);
+  padding: clamp(5rem, 8vw, 7rem) 0 clamp(2.5rem, 4vw, 3.5rem);
   background:
     radial-gradient(circle at 18% 20%, rgba(184, 138, 45, 0.2), transparent 22rem),
     radial-gradient(circle at 86% 10%, rgba(12, 10, 9, 0.09), transparent 28rem),
@@ -76,10 +77,10 @@
   max-width: 40rem;
   color: #0c0a09;
   font-family: var(--font-bebas), var(--font-dm-sans), system-ui, sans-serif;
-  font-size: clamp(3.2rem, 7.5vw, 8rem);
+  font-size: clamp(3rem, 6.2vw, 6.5rem);
   font-weight: 400;
   letter-spacing: 0.035em;
-  line-height: 0.88;
+  line-height: 0.92;
   text-transform: uppercase;
   text-wrap: balance;
 }

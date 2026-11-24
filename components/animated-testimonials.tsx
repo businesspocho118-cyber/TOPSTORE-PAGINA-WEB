@@ -53,7 +53,7 @@ export function AnimatedTestimonials({
       gsap.from('[data-review-reveal]', {
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: 'top 72%',
+          start: 'top 85%',
           once: true,
         },
         autoAlpha: 0,
@@ -61,6 +61,8 @@ export function AnimatedTestimonials({
         stagger: 0.08,
         duration: 0.7,
         ease: 'power3.out',
+        immediateRender: false,
+        clearProps: 'opacity,visibility,transform',
       })
 
       gsap.to('[data-review-orbit]', {

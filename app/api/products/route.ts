@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
+import { isExcludedOfferProduct } from '@/lib/products'
 import { createServerClient } from '@/lib/supabase/server'
 
 export const runtime = 'edge'
@@ -49,6 +50,11 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Supabase no está configurado.' }, { status: 503 })
   }
 
+  const categoriaNorm = parsed.data.categoria?.toLowerCase().trim()
+  if (categoriaNorm === 'oferta' || categoriaNorm === 'ofertas') {
+    return NextResponse.json({ products: [] }, { status: 200 })
+  }
+
   let query = supabase
     .from('productos')
     .select('*')
@@ -62,7 +68,6 @@ export async function GET(request: NextRequest) {
     query = query.in('genero', generos)
   }
   if (parsed.data.categoria) query = query.eq('categoria', parsed.data.categoria)
-  if (parsed.data.limit) query = query.limit(parsed.data.limit)
 
   const { data, error } = await query
 
@@ -70,5 +75,10 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'No se pudieron cargar los productos.' }, { status: 500 })
   }
 
-  return NextResponse.json({ products: data ?? [] }, { status: 200 })
+  let products = (data ?? []).filter((product) => !isExcludedOfferProduct(product))
+  if (parsed.data.limit) {
+    products = products.slice(0, parsed.data.limit)
+  }
+
+  return NextResponse.json({ products }, { status: 200 })
 }

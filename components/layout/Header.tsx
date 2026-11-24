@@ -12,7 +12,6 @@ import {
   MessageCircle,
   ShoppingBag,
   Sparkles,
-  Tag,
   X
 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
@@ -26,7 +25,6 @@ const mainNavItems = [
 ]
 
 const otherOptions = [
-  { href: '/ofertas', label: 'Ofertas (Packs)', tag: 'Ahorro', icon: Tag },
   { href: '/bolsos', label: 'Bolsos', tag: 'Nuevo', icon: ShoppingBag },
   { href: '/accesorios', label: 'Accesorios', tag: 'Detalles', icon: Sparkles },
   { href: '/#tarjetas-regalo', label: 'Regalos', tag: 'Sin fecha', icon: Gift }
@@ -91,7 +89,6 @@ export function Header() {
     (pathname?.startsWith('/accesorios') ||
       pathname?.startsWith('/cosmetica') ||
       pathname?.startsWith('/bolsos') ||
-      pathname?.startsWith('/ofertas') ||
       pathname?.startsWith('/bolsos-y-belleza')) ?? false
   const activeOther = mounted && isOtherActive
 
@@ -427,15 +424,16 @@ export function Header() {
                   </div>
                 </div>
 
-                {/* Categorías & Ofertas */}
+                {/* Categorías & Especiales */}
                 <div className="space-y-2">
                   <p className="text-[0.68rem] font-black uppercase tracking-[0.22em] text-[#e9c56e]/80 px-1">
                     Catálogo & Especiales
                   </p>
                   <div className="grid grid-cols-2 gap-2">
-                    {otherOptions.map((item) => {
+                    {otherOptions.map((item, index) => {
                       const Icon = item.icon
                       const isActive = item.href.startsWith('/#') ? false : pathname.startsWith(item.href)
+                      const isOddLast = index === otherOptions.length - 1 && otherOptions.length % 2 === 1
                       return (
                         <Link
                           key={item.href}
@@ -443,6 +441,7 @@ export function Header() {
                           onClick={() => setIsMenuOpen(false)}
                           className={cn(
                             'group flex flex-col justify-between rounded-2xl border p-3.5 transition active:scale-[0.98]',
+                            isOddLast && 'col-span-2',
                             isActive
                               ? 'border-[#e9c56e] bg-[#e9c56e]/15 text-[#e9c56e]'
                               : 'border-white/10 bg-white/[0.03] text-white hover:border-[#e9c56e]/40 hover:bg-white/[0.06]'
@@ -493,7 +492,7 @@ export function Header() {
                     ¿Tienes dudas o necesitas ayuda?
                   </p>
                   <p className="mt-1 text-xs text-white/70">
-                    Te asesoramos con tallas, combos o compras personalizadas.
+                    Te asesoramos con tallas, disponibilidad o compras personalizadas.
                   </p>
                   <Link
                     href="https://wa.me/573205172484?text=Hola,%20necesito%20asesor%C3%ADa%20con%20una%20prenda%20de%20TOPSTORE"

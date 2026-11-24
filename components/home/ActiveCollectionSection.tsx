@@ -29,20 +29,12 @@ const showcaseSections = [
     gridProps: { genero: 'mujeres' as const, limit: 8, onlyInStock: true },
   },
   {
-    id: 'vitrina-ofertas',
-    eyebrow: 'Packs & Ahorro Especial',
-    title: 'Ofertas (Packs)',
-    linkText: 'Ver todas las Ofertas',
-    linkHref: '/ofertas',
-    gridProps: { categoria: 'Ofertas', limit: 8, onlyInStock: true },
-  },
-  {
     id: 'vitrina-accesorios',
     eyebrow: 'Detalles & Complementos',
     title: 'Accesorios',
     linkText: 'Ver todo Accesorios',
     linkHref: '/accesorios',
-    gridProps: { genero: 'accesorios' as const, excludeOfertas: true, limit: 8, onlyInStock: true },
+    gridProps: { genero: 'accesorios' as const, limit: 8, onlyInStock: true },
   },
 ]
 

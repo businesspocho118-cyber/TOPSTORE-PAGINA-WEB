@@ -23,11 +23,11 @@ const categories = [
     image: '/category-images/mujeres-new.jpg',
   },
   {
-    href: '/ofertas',
-    title: 'Ofertas',
-    copy: 'Packs especiales y combos con ahorro exclusivo.',
+    href: '/accesorios',
+    title: 'Accesorios',
+    copy: 'Detalles funcionales para cerrar tu rutina.',
     tone: 'accessories',
-    image: '/category-images/ofertas.jpg',
+    image: '/category-images/accesorios.png',
   },
 ]
 

@@ -7,7 +7,7 @@ import { testimonialsData } from '@/lib/testimonials'
 
 export default function StoryScrollSection() {
   return (
-    <FlowArt className="relative z-10 mt-4 bg-background" aria-label="Reseñas y marca TOPSTORE">
+    <FlowArt className="relative z-10 bg-background" aria-label="Reseñas y marca TOPSTORE">
       <FlowSection className="bg-background" aria-label="Reseñas verificadas TOPSTORE">
         <AnimatedTestimonials
           title="Nuestra vitrina real"

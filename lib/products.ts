@@ -9,7 +9,38 @@ export type ProductFilters = {
   categoria?: string
   limit?: number
   onlyInStock?: boolean
-  excludeOfertas?: boolean
+}
+
+const EXCLUDED_OFFER_IDS = new Set([
+  'pack-5-esponjas-variadas',
+  'combo-cosmetiquera-2-monas-3-esponjas',
+  'pack-6-esponjas-2-monas-satin',
+  'pack-3-monas-satin',
+  'pack-3-esponjas-variadas',
+])
+
+const EXCLUDED_OFFER_WORD_REGEX = /\b(oferta|ofertas|pack|packs|combo|combos|kit|kits|2x1|3x1)\b/
+
+function normalizeOfferText(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+}
+
+export function isExcludedOfferProduct(product: {
+  nombre?: string | null
+  categoria?: string | null
+  product_id?: string | null
+}): boolean {
+  const categoriaNorm = normalizeOfferText(product.categoria ?? '').trim()
+  if (categoriaNorm === 'oferta' || categoriaNorm === 'ofertas') return true
+
+  const idNorm = (product.product_id ?? '').toLowerCase().trim()
+  if (EXCLUDED_OFFER_IDS.has(idNorm)) return true
+
+  const text = normalizeOfferText(`${product.categoria ?? ''} ${product.nombre ?? ''} ${product.product_id ?? ''}`)
+  return EXCLUDED_OFFER_WORD_REGEX.test(text) || text.includes('+')
 }
 
 function gendersForFilter(genero?: ProductGender): ProductGender[] | null {
@@ -34,7 +65,6 @@ async function queryProducts(filters: ProductFilters = {}): Promise<ProductRecor
   const generos = gendersForFilter(filters.genero)
   if (generos) query = query.in('genero', generos)
   if (filters.categoria) query = query.ilike('categoria', filters.categoria)
-  if (filters.limit && !filters.onlyInStock && !filters.excludeOfertas) query = query.limit(filters.limit)
 
   const { data, error } = await query
   if (error) {
@@ -42,14 +72,7 @@ async function queryProducts(filters: ProductFilters = {}): Promise<ProductRecor
     return []
   }
 
-  let products = (data ?? []) as ProductRecord[]
-
-  if (filters.excludeOfertas) {
-    products = products.filter((product) => {
-      const text = `${product.categoria ?? ''} ${product.nombre} ${product.product_id}`.toLowerCase()
-      return !['pack', 'combo', 'kit', 'set', 'oferta', '+', '2x1', '3x1'].some((kw) => text.includes(kw))
-    })
-  }
+  let products = ((data ?? []) as ProductRecord[]).filter((product) => !isExcludedOfferProduct(product))
 
   if (filters.onlyInStock) {
     products = products.filter((product) => getTotalAvailableStock(product.unidades, product.stock) > 0)
@@ -73,7 +96,7 @@ async function queryProductIds(): Promise<Array<Pick<ProductRecord, 'product_id'
 
   const { data, error } = await supabase
     .from('productos')
-    .select('product_id, updated_at')
+    .select('product_id, updated_at, categoria, nombre')
     .eq('activo', true)
 
   if (error) {
@@ -81,7 +104,9 @@ async function queryProductIds(): Promise<Array<Pick<ProductRecord, 'product_id'
     return []
   }
 
-  return data ?? []
+  return (data ?? [])
+    .filter((product) => !isExcludedOfferProduct(product))
+    .map(({ product_id, updated_at }) => ({ product_id, updated_at }))
 }
 
 const getCachedProductIds = unstable_cache(queryProductIds, ['topstore-product-ids'], {
@@ -107,6 +132,8 @@ async function queryProductByProductId(productId: string): Promise<ProductRecord
     console.error('[TOPSTORE] Error loading product:', error.message)
     return null
   }
+
+  if (!data || isExcludedOfferProduct(data)) return null
 
   return data
 }

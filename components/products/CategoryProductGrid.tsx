@@ -17,7 +17,6 @@ const categories = [
   { label: 'Tops', keywords: ['top'], color: 'text-rose-600', bar: 'bg-rose-500' },
   { label: 'Medias', keywords: ['media', 'medias'], color: 'text-indigo-600', bar: 'bg-indigo-500' },
   { label: 'Bolsos', keywords: ['bolso', 'bolsos', 'cartera', 'carteras', 'mochila', 'mochilas', 'morral', 'morrales', 'tote', 'maletin', 'maletines', 'rinonera', 'riñonera'], color: 'text-amber-700', bar: 'bg-amber-600' },
-  { label: 'Ofertas (Packs)', keywords: ['oferta', 'ofertas', 'pack', 'packs', 'combo', 'combos', 'kit', 'kits'], color: 'text-amber-600', bar: 'bg-amber-500' },
 ]
 
 const SIN_MANGA_KW = ['sin manga', 'tirante', 'i dont care', 'workout', 'alpha']
@@ -44,9 +43,8 @@ export async function CategoryProductGrid({ genero }: { genero: ProductGender })
   if (genero === 'accesorios') {
     allProducts = allProducts.filter((p) => {
       const text = normalize(`${p.categoria ?? ''} ${p.nombre} ${p.product_id ?? ''}`)
-      const isOferta = ['pack', 'combo', 'kit', 'set', 'oferta', '+', '2x1', '3x1'].some((kw) => text.includes(kw))
       const isBolsos = ['bolso', 'bolsos', 'cartera', 'carteras', 'mochila', 'mochilas', 'morral', 'morrales', 'tote', 'maletin'].some((kw) => text.includes(kw))
-      return !isOferta && !isBolsos
+      return !isBolsos
     })
   }
   if (allProducts.length === 0) return null
